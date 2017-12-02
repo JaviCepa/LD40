@@ -13,8 +13,10 @@ public class Lonk : MonoBehaviour {
 
 	float verticalSpeed = 0;
 	Animator animator;
+	public LayerMask layerMask;
 
-	void Awake () {
+	void Awake ()
+	{
 		animator = GetComponent<Animator>();
 	}
 
@@ -30,15 +32,16 @@ public class Lonk : MonoBehaviour {
 			() => { },
 			() => { if (verticalSpeed < 0) { verticalSpeed = 0; } }
 		);
-
-		TryMove(Vector3.up * Mathf.Sign(verticalSpeed),
+		
+		TryMove(Vector3.up*Mathf.Sign(verticalSpeed),
 			() => {
 				transform.position += Vector3.up * verticalSpeed * Time.fixedDeltaTime;
 				verticalSpeed -= gravity;
 				if (verticalSpeed < verticalSpeedLimit) { verticalSpeed = verticalSpeedLimit; }
 			},
-			() => { verticalSpeed = 0; }
+			() => { verticalSpeed = 0; verticalSpeed -= gravity; }
 		);
+		
 
 		animator.SetFloat("vspeed", verticalSpeed);
 	}
@@ -91,7 +94,7 @@ public class Lonk : MonoBehaviour {
 		var topPoint = forwardPoint + perpendicular * 0.25f;
 		var bottomPoint = forwardPoint - perpendicular * 0.25f;
 
-		if (!Physics2D.Linecast(topPoint, bottomPoint))
+		if (!Physics2D.Linecast(topPoint, bottomPoint, layerMask.value))
 		{
 			Action();
 			Debug.DrawLine(topPoint, bottomPoint, Color.yellow);
@@ -99,11 +102,11 @@ public class Lonk : MonoBehaviour {
 		else
 		{
 			if (correctPosition) {
-				RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
+				RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1, layerMask.value);
 				if (hit.distance != 0)
 				{
 					var error = ((Vector3)hit.point - transform.position) - direction * 0.49f;
-					if (error.magnitude<0.5f) {
+					if (error.magnitude < 0.5f) {
 						transform.position += error;
 					}
 				}
