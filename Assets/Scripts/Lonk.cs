@@ -68,7 +68,6 @@ public class Lonk : MonoBehaviour {
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1.5f, 1f).SetEase(Ease.OutQuad));
-		//sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.InExpo));
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
 		sequence.AppendCallback(() => animator.SetBool("treasure", false));
@@ -88,6 +87,16 @@ public class Lonk : MonoBehaviour {
 		}
 	}
 
+	Vector3 lastCheckPoint;
+
+	public void SaveCheckPoint() {
+		lastCheckPoint = transform.position;
+	}
+
+	public void Kill() {
+		transform.position = lastCheckPoint + Vector3.right*0.5f*Mathf.Sign(transform.localScale.x);
+	}
+
 	private void ActivateSkill(SkillTypes skillType)
 	{
 		currentSkills.Add(skillType);
@@ -100,29 +109,50 @@ public class Lonk : MonoBehaviour {
 
 	public GameObject swordOff;
 	public GameObject swordOn;
+	public GameObject boomerangOff;
+	public GameObject boomerangOn;
 
 	[HideInInspector]public bool grounded;
 
 	public void Attack()
 	{
-		if (currentSkills.Contains(SkillTypes.Sword) && swordOff.activeSelf==true) {
-			swordOff.SetActive(false);
-			swordOn.SetActive(true);
-
-			var hits = Physics2D.OverlapCircleAll(transform.position + Vector3.right * transform.localScale.x, 0.25f);
-
-			foreach (var hit in hits)
+		if (grounded || !currentSkills.Contains(SkillTypes.Boomerang))
+		{
+			if (currentSkills.Contains(SkillTypes.Sword) && swordOff.activeSelf == true)
 			{
-				hit.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
-			}
+				swordOff.SetActive(false);
+				swordOn.SetActive(true);
 
-			Invoke("ResetSword", 0.2f);
+				var hits = Physics2D.OverlapCircleAll(transform.position + Vector3.right * transform.localScale.x, 0.25f);
+
+				foreach (var hit in hits)
+				{
+					hit.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+				}
+
+				Invoke("ResetSword", 0.2f);
+			}
+		}
+		else
+		{
+			if (currentSkills.Contains(SkillTypes.Boomerang) && boomerangOff.activeSelf == true) {
+				boomerangOff.SetActive(false);
+				boomerangOn.SetActive(true);
+				boomerangOn.SendMessage("Throw", gameObject, SendMessageOptions.DontRequireReceiver);
+			}
 		}
 	}
 
 	void ResetSword() {
 		swordOff.SetActive(true);
 		swordOn.SetActive(false);
+	}
+
+	public void RecoverBoomerang()
+	{
+		boomerangOff.SetActive(true);
+		boomerangOn.SetActive(false);
+		boomerangOn.transform.SetParent(transform);
 	}
 
 	public void Jump()
