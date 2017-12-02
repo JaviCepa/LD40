@@ -39,9 +39,10 @@ public class Lonk : MonoBehaviour {
 	{
 
 		TryMove(Vector3.down * 1.1f,
-			() => { animator.SetBool("grounded", false); },
-			() => { animator.SetBool("grounded", true); },
+			() => { grounded = false; },
+			() => { grounded = true; },
 			false);
+		animator.SetBool("grounded", grounded);
 
 		TryMove(Vector3.down,
 			() => { },
@@ -66,13 +67,14 @@ public class Lonk : MonoBehaviour {
 		control.enabled = false;
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
-		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 2, 0.25f).SetEase(Ease.OutQuad));
-		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1, 0.25f).SetEase(Ease.InQuad));
+		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1.5f, 1f).SetEase(Ease.OutQuad));
+		//sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.InExpo));
 		sequence.AppendInterval(1.0f);
+		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
+		sequence.AppendCallback(() => animator.SetBool("treasure", false));
 		sequence.AppendCallback(() => ActivateSkill(skill));
 		sequence.AppendCallback(() => Destroy(treasure));
 		sequence.AppendCallback(() => control.enabled = true);
-		sequence.AppendCallback(() => animator.SetBool("treasure", false));
 		sequence.AppendCallback(() => FindAndActivateSkillObject(skill));
 	}
 
@@ -94,6 +96,33 @@ public class Lonk : MonoBehaviour {
 	public void Stop()
 	{
 		animator.SetFloat("hspeed", 0);
+	}
+
+	public GameObject swordOff;
+	public GameObject swordOn;
+
+	[HideInInspector]public bool grounded;
+
+	public void Attack()
+	{
+		if (currentSkills.Contains(SkillTypes.Sword) && swordOff.activeSelf==true) {
+			swordOff.SetActive(false);
+			swordOn.SetActive(true);
+
+			var hits = Physics2D.OverlapCircleAll(transform.position + Vector3.right * transform.localScale.x, 0.25f);
+
+			foreach (var hit in hits)
+			{
+				hit.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+			}
+
+			Invoke("ResetSword", 0.2f);
+		}
+	}
+
+	void ResetSword() {
+		swordOff.SetActive(true);
+		swordOn.SetActive(false);
 	}
 
 	public void Jump()

@@ -37,6 +37,7 @@ public class Cannon : MonoBehaviour {
 		sequence.AppendCallback(() => trail.SetActive(true));
 		points = path.wps.ToArray();
 		sequence.AppendCallback(() => { lonkDummy.transform.localScale = Vector3.one; });
+		sequence.AppendCallback(() => FindObjectOfType<Com.LuisPedroFonseca.ProCamera2D.ProCamera2DShake>().Shake(0));
 		sequence.Append(lonkDummy.transform.DOPath(points, 5f).SetEase(Ease.OutExpo));
 		sequence.Join(lonkDummy.transform.DORotate(Vector3.forward * 360, 0.25f).SetLoops(10, LoopType.Restart).SetRelative(true).SetEase(Ease.Linear));
 		sequence.Join(lonkDummy.transform.DOScale(0.05f, 5f).SetEase(Ease.OutExpo));
