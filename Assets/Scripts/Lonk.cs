@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Lonk : MonoBehaviour {
 
@@ -9,15 +11,28 @@ public class Lonk : MonoBehaviour {
 	public int maxJumpSpeed = 50;
 	public float gravity = 0.1f;
 	public float colliderWidth = 0.35f;
+
+	PlayerControl control;
+
 	public float verticalSpeedLimit = 4;
 
-	float verticalSpeed = 0;
+	[HideInInspector]public float verticalSpeed = 0;
 	Animator animator;
 	public LayerMask layerMask;
 
+	public ParticleSystem splashPs;
+
+	public List<SkillTypes> currentSkills;
+
+	void Splash() {
+		splashPs.Emit(10);
+	}
+
 	void Awake ()
 	{
+		control = GetComponent<PlayerControl>();
 		animator = GetComponent<Animator>();
+		currentSkills = new List<SkillTypes>();
 	}
 
 	private void Update()
@@ -46,6 +61,36 @@ public class Lonk : MonoBehaviour {
 		animator.SetFloat("vspeed", verticalSpeed);
 	}
 
+	internal void PickTreasure(GameObject treasure, SkillTypes skill)
+	{
+		control.enabled = false;
+		var sequence = DOTween.Sequence();
+		sequence.AppendCallback(() => animator.SetBool("treasure", true));
+		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 2, 0.25f).SetEase(Ease.OutQuad));
+		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1, 0.25f).SetEase(Ease.InQuad));
+		sequence.AppendInterval(1.0f);
+		sequence.AppendCallback(() => ActivateSkill(skill));
+		sequence.AppendCallback(() => Destroy(treasure));
+		sequence.AppendCallback(() => control.enabled = true);
+		sequence.AppendCallback(() => animator.SetBool("treasure", false));
+		sequence.AppendCallback(() => FindAndActivateSkillObject(skill));
+	}
+
+	private void FindAndActivateSkillObject(SkillTypes skill)
+	{
+		foreach (Transform child in transform)
+		{
+			if (skill.ToString() == child.name) {
+				child.gameObject.SetActive(true);
+			}
+		}
+	}
+
+	private void ActivateSkill(SkillTypes skillType)
+	{
+		currentSkills.Add(skillType);
+	}
+
 	public void Stop()
 	{
 		animator.SetFloat("hspeed", 0);
@@ -53,14 +98,20 @@ public class Lonk : MonoBehaviour {
 
 	public void Jump()
 	{
-		TryMove(Vector3.up, () =>
-		{
-			transform.position += Vector3.up * Time.fixedDeltaTime * maxJumpSpeed;
-			verticalSpeed = maxJumpSpeed;
-			animator.SetFloat("hspeed", walkSpeed);
-		},
-		Stop
-		);
+		bool overGround = false;
+
+		TryMove(Vector3.down, () => { overGround = false; }, () => { overGround = true; }, false);
+		
+		if (overGround) {
+			TryMove(Vector3.up, () =>
+			{
+				//transform.position += Vector3.up * Time.fixedDeltaTime * maxJumpSpeed;
+				verticalSpeed = maxJumpSpeed;
+				animator.SetFloat("hspeed", walkSpeed);
+			},
+			Stop
+			);
+		}
 	}
 
 	public void MoveLeft()
@@ -121,3 +172,5 @@ public class Lonk : MonoBehaviour {
 	}
 
 }
+
+public enum SkillTypes { None, Sword, Boomerang, Bomb, Shovel, Bag, Hook, Rod, Anvil, Gem }
