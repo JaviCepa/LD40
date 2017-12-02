@@ -8,7 +8,8 @@ public class Lonk : MonoBehaviour {
 	public float fallSpeed = 1f;
 	public int maxJumpSpeed = 50;
 	public float gravity = 0.1f;
-	public float colliderWidth=0.35f;
+	public float colliderWidth = 0.35f;
+	public float verticalSpeedLimit = 4;
 
 	float verticalSpeed = 0;
 	Animator animator;
@@ -17,7 +18,7 @@ public class Lonk : MonoBehaviour {
 		animator = GetComponent<Animator>();
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
 
 		TryMove(Vector3.down * 1.1f,
@@ -34,6 +35,7 @@ public class Lonk : MonoBehaviour {
 			() => {
 				transform.position += Vector3.up * verticalSpeed * Time.fixedDeltaTime;
 				verticalSpeed -= gravity;
+				if (verticalSpeed < verticalSpeedLimit) { verticalSpeed = verticalSpeedLimit; }
 			},
 			() => { verticalSpeed = 0; }
 		);

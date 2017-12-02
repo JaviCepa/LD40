@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour {
 		lonk = GetComponent<Lonk>();
 	}
 	
-	void FixedUpdate () {
+	void Update () {
 		ProcessInput(Input.GetKeyDown(KeyCode.Z), lonk.Jump);
 		ProcessInput(Input.GetKey(KeyCode.LeftArrow), lonk.MoveLeft);
 		ProcessInput(Input.GetKey(KeyCode.RightArrow), lonk.MoveRight);
