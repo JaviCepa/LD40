@@ -7,7 +7,7 @@ public class SpritePostprocessor : AssetPostprocessor
 
     void OnPreprocessTexture()
     {
-        if (assetImporter.assetPath.Contains("Resources/Tiles"))
+        if (assetImporter.assetPath.Contains("Sprites"))
         {
             TextureImporter importer = assetImporter as TextureImporter;
             importer.anisoLevel = 0;
