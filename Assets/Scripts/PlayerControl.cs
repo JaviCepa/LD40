@@ -14,6 +14,9 @@ public class PlayerControl : MonoBehaviour {
 	void Update () {
 		ProcessInput(Input.GetKeyDown(KeyCode.Z), lonk.Jump);
 		ProcessInput(Input.GetKeyDown(KeyCode.X), lonk.Attack);
+		ProcessInput(Input.GetKeyDown(KeyCode.DownArrow), lonk.Dig);
+		ProcessInput(Input.GetKey(KeyCode.UpArrow), lonk.Shield);
+		ProcessInput(!Input.GetKey(KeyCode.UpArrow), lonk.Unshield);
 		ProcessInput(Input.GetKey(KeyCode.LeftArrow), lonk.MoveLeft);
 		ProcessInput(Input.GetKey(KeyCode.RightArrow), lonk.MoveRight);
 		ProcessInput(!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow), lonk.Stop);

@@ -17,12 +17,34 @@ public class Lonk : MonoBehaviour {
 	public float verticalSpeedLimit = 4;
 
 	[HideInInspector]public float verticalSpeed = 0;
+
 	Animator animator;
+
+	bool shielded=false;
+
 	public LayerMask layerMask;
 
 	public ParticleSystem splashPs;
 
+	public int money;
 	public List<SkillTypes> currentSkills;
+
+	Vector3 lastCheckPoint;
+
+	public GameObject swordOff;
+	public GameObject swordOn;
+	public GameObject boomerangOff;
+	public GameObject boomerangOn;
+	public GameObject shovelOff;
+	public GameObject shovelOn;
+	public GameObject shieldOff;
+	public GameObject shieldOn;
+
+
+	public GameObject itemCollectedParticlesPrefab;
+
+	[HideInInspector]public bool grounded;
+	public bool jumpDisabled=false;
 
 	void Splash() {
 		splashPs.Emit(10);
@@ -62,12 +84,18 @@ public class Lonk : MonoBehaviour {
 		animator.SetFloat("vspeed", verticalSpeed);
 	}
 
+	internal void AddRupee()
+	{
+		money++;
+	}
+
 	internal void PickTreasure(GameObject treasure, SkillTypes skill)
 	{
 		control.enabled = false;
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
-		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1.5f, 1f).SetEase(Ease.OutQuad));
+		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.OutQuad));
+		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position, Quaternion.identity, treasure.transform));
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
 		sequence.AppendCallback(() => animator.SetBool("treasure", false));
@@ -87,8 +115,6 @@ public class Lonk : MonoBehaviour {
 		}
 	}
 
-	Vector3 lastCheckPoint;
-
 	public void SaveCheckPoint() {
 		lastCheckPoint = transform.position;
 	}
@@ -99,6 +125,7 @@ public class Lonk : MonoBehaviour {
 
 	private void ActivateSkill(SkillTypes skillType)
 	{
+		maxJumpSpeed--;
 		currentSkills.Add(skillType);
 	}
 
@@ -107,12 +134,53 @@ public class Lonk : MonoBehaviour {
 		animator.SetFloat("hspeed", 0);
 	}
 
-	public GameObject swordOff;
-	public GameObject swordOn;
-	public GameObject boomerangOff;
-	public GameObject boomerangOn;
+	public void Shield()
+	{
+		if (currentSkills.Contains(SkillTypes.Shield))
+		{
+			shieldOff.SetActive(false);
+			shieldOn.SetActive(true);
+			shielded = true;
+		}
+	}
 
-	[HideInInspector]public bool grounded;
+	public void Unshield()
+	{
+		if (currentSkills.Contains(SkillTypes.Shield))
+		{
+			shieldOff.SetActive(true);
+			shieldOn.SetActive(false);
+			shielded = false;
+		}
+	}
+
+	internal void Dig()
+	{
+		if (grounded && currentSkills.Contains(SkillTypes.Shovel) && shovelOff.activeSelf == true)
+		{
+			var sequence = DOTween.Sequence();
+			var startPos=shovelOn.transform.localPosition;
+			control.enabled = false;
+			shovelOff.SetActive(false);
+			shovelOn.SetActive(true);
+			sequence.Append(shovelOn.transform.DOLocalMoveY(1f/8f, 0.2f).SetLoops(3, LoopType.Restart).SetEase(Ease.InOutSine));
+			sequence.AppendCallback(
+				() => {
+					var hits = Physics2D.OverlapCircleAll(transform.position + Vector3.down, 0.1f);
+
+					foreach (var hit in hits)
+					{
+						hit.SendMessage("Dig", SendMessageOptions.DontRequireReceiver);
+					}
+					control.enabled = true;
+
+					shovelOff.SetActive(true);
+					shovelOn.SetActive(false);
+					shovelOn.transform.localPosition = startPos;
+				}
+			);
+		}
+	}
 
 	public void Attack()
 	{
@@ -155,46 +223,70 @@ public class Lonk : MonoBehaviour {
 		boomerangOn.transform.SetParent(transform);
 	}
 
+	public void EnableJump()
+	{
+		jumpDisabled = false;
+	}
+
+	public void DisableJump() {
+		jumpDisabled = true;
+	}
+
 	public void Jump()
 	{
-		bool overGround = false;
+		if (!jumpDisabled) {
+			bool overGround = false;
 
-		TryMove(Vector3.down, () => { overGround = false; }, () => { overGround = true; }, false);
+			TryMove(Vector3.down, () => { overGround = false; }, () => { overGround = true; }, false);
 		
-		if (overGround) {
-			TryMove(Vector3.up, () =>
-			{
-				//transform.position += Vector3.up * Time.fixedDeltaTime * maxJumpSpeed;
-				verticalSpeed = maxJumpSpeed;
-				animator.SetFloat("hspeed", walkSpeed);
-			},
-			Stop
-			);
+			if (overGround) {
+				TryMove(Vector3.up, () =>
+				{
+					verticalSpeed = maxJumpSpeed;
+					animator.SetFloat("hspeed", walkSpeed);
+				},
+				Stop
+				);
+			}
 		}
 	}
 
 	public void MoveLeft()
 	{
-		TryMove(Vector3.left * colliderWidth, () =>
+		if (!shielded)
 		{
-			transform.position += Vector3.left * Time.fixedDeltaTime * walkSpeed;
-			transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-			animator.SetFloat("hspeed", walkSpeed);
-		},
-		Stop
-		);
+			TryMove(Vector3.left * colliderWidth, () =>
+			{
+				transform.position += Vector3.left * Time.fixedDeltaTime * walkSpeed;
+				transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+				animator.SetFloat("hspeed", walkSpeed);
+			},
+			Stop
+			);
+		}
+		else
+		{
+			Stop();
+		}
 	}
 
 	public void MoveRight()
 	{
-		TryMove(Vector3.right * colliderWidth, () =>
+		if (!shielded) {
+			TryMove(Vector3.right * colliderWidth, () =>
+			{
+				var shieldFactor = shielded ? 0.0f : 1;
+				transform.position += Vector3.right * Time.fixedDeltaTime * walkSpeed;
+				transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+				animator.SetFloat("hspeed", walkSpeed);
+			},
+			Stop
+			);
+		}
+		else
 		{
-			transform.position += Vector3.right * Time.fixedDeltaTime * walkSpeed;
-			transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-			animator.SetFloat("hspeed", walkSpeed);
-		},
-		Stop
-		);
+			Stop();
+		}
 	}
 
 	void TryMove(Vector3 direction, System.Action Action, System.Action Unable = null, bool correctPosition = true)
@@ -232,4 +324,4 @@ public class Lonk : MonoBehaviour {
 
 }
 
-public enum SkillTypes { None, Sword, Boomerang, Bomb, Shovel, Bag, Hook, Rod, Anvil, Gem }
+public enum SkillTypes { None, Sword, Boomerang, Bomb, Shovel, Bag, Hook, Rod, Anvil, Gem, Shield }

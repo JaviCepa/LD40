@@ -14,11 +14,18 @@ public class SplashEffect : MonoBehaviour {
 		Gizmos.DrawLine(transform.position + Vector3.right + Vector3.up * height, transform.position + Vector3.left + Vector3.up * height);
 	}
 
-	private void OnTriggerEnter2D (Collider2D collision)
+	private void OnTriggerEnter2D (Collider2D other)
 	{
-		var position = collision.gameObject.transform.position;
+		var position = other.gameObject.transform.position;
 		position = new Vector3(position.x, transform.position.y+height, position.z-1);
 		Instantiate(splashPrefab, position, splashPrefab.transform.rotation);
+		other.gameObject.SendMessage("DisableJump", SendMessageOptions.DontRequireReceiver);
 	}
-	
+
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		other.gameObject.SendMessage("EnableJump", SendMessageOptions.DontRequireReceiver);
+	}
+
+
 }
