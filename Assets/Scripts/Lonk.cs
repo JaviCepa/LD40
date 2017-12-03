@@ -90,14 +90,14 @@ public class Lonk : MonoBehaviour {
 		money++;
 	}
 
-	internal void PickTreasure(GameObject treasure, SkillTypes skill, string nameToDisplay="")
+	internal void PickTreasure(GameObject treasure, SkillTypes skill, string nameToDisplay = "")
 	{
 		control.enabled = false;
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.OutQuad));
-		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position-Vector3.forward, Quaternion.identity, treasure.transform));
-		sequence.AppendCallback(() => { if (nameToDisplay != "") { TreasureTextManager.DisplayMessage(nameToDisplay); } } );
+		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position - Vector3.forward, Quaternion.identity, treasure.transform));
+		sequence.AppendCallback(() => { if (nameToDisplay != "") { TreasureTextManager.DisplayMessage(nameToDisplay); } });
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
 		sequence.AppendCallback(() => animator.SetBool("treasure", false));
@@ -105,6 +105,15 @@ public class Lonk : MonoBehaviour {
 		sequence.AppendCallback(() => Destroy(treasure));
 		sequence.AppendCallback(() => control.enabled = true);
 		sequence.AppendCallback(() => FindAndActivateSkillObject(skill));
+		sequence.AppendInterval(2f);
+		sequence.AppendCallback(() =>
+		{
+			if (skill == SkillTypes.Rod)
+			{
+				GameManager.LoadEnding(EndingTypes.Fishing);
+			}
+		}
+		);
 	}
 
 	private void FindAndActivateSkillObject(SkillTypes skill)

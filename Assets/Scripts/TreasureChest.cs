@@ -14,8 +14,12 @@ public class TreasureChest : MonoBehaviour {
 		{
 			open = true;
 			GetComponent<SpriteRenderer>().sprite = openSprite;
-			GameManager.LoadEnding(EndingTypes.Treasure);
+			Invoke("LoadEnding", 1);
 		}
+	}
+
+	void LoadEnding() {
+		GameManager.LoadEnding(EndingTypes.Treasure);
 	}
 	
 }
