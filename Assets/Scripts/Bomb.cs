@@ -6,6 +6,7 @@ using DG.Tweening;
 public class Bomb : MonoBehaviour {
 
 	public GameObject target;
+	public GameObject particles;
 
 	Lonk lonk;
 
@@ -19,7 +20,7 @@ public class Bomb : MonoBehaviour {
 			var sequence = DOTween.Sequence();
 			sequence.Append(transform.DOScale(1.0f, 0.5f));
 			sequence.Append(transform.DOScale(1.2f, 0.5f).SetLoops(5, LoopType.Yoyo));
-			//TODO: Particles
+			sequence.AppendCallback(()=> particles.SetActive(true));
 			sequence.AppendCallback(() => { Destroy(target); Destroy(gameObject); });
 		}
 	}

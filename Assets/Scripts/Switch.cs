@@ -17,6 +17,11 @@ public class Switch : MonoBehaviour {
 		}
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		Damage(1);
+	}
+
 	private void OnDrawGizmos()
 	{
 		if (target != null) {
