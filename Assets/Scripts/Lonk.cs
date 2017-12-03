@@ -95,7 +95,7 @@ public class Lonk : MonoBehaviour {
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.OutQuad));
-		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position, Quaternion.identity, treasure.transform));
+		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position-Vector3.forward, Quaternion.identity, treasure.transform));
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
 		sequence.AppendCallback(() => animator.SetBool("treasure", false));
@@ -120,7 +120,7 @@ public class Lonk : MonoBehaviour {
 	}
 
 	public void Kill() {
-		transform.position = lastCheckPoint + Vector3.right*0.5f*Mathf.Sign(transform.localScale.x);
+		transform.position = lastCheckPoint;
 	}
 
 	private void ActivateSkill(SkillTypes skillType)
@@ -191,7 +191,7 @@ public class Lonk : MonoBehaviour {
 				swordOff.SetActive(false);
 				swordOn.SetActive(true);
 
-				var hits = Physics2D.OverlapCircleAll(transform.position + Vector3.right * transform.localScale.x, 0.25f);
+				var hits = Physics2D.OverlapCircleAll(swordOn.transform.position, 0.4f);
 
 				foreach (var hit in hits)
 				{
@@ -275,7 +275,6 @@ public class Lonk : MonoBehaviour {
 		if (!shielded) {
 			TryMove(Vector3.right * colliderWidth, () =>
 			{
-				var shieldFactor = shielded ? 0.0f : 1;
 				transform.position += Vector3.right * Time.fixedDeltaTime * walkSpeed;
 				transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
 				animator.SetFloat("hspeed", walkSpeed);
