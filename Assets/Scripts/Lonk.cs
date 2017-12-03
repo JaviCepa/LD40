@@ -39,8 +39,9 @@ public class Lonk : MonoBehaviour {
 	public GameObject shovelOn;
 	public GameObject shieldOff;
 	public GameObject shieldOn;
-
-
+	public GameObject hookOff;
+	public GameObject hookOn;
+	
 	public GameObject itemCollectedParticlesPrefab;
 
 	[HideInInspector]public bool grounded;
@@ -115,11 +116,13 @@ public class Lonk : MonoBehaviour {
 		}
 	}
 
-	public void SaveCheckPoint() {
+	public void SaveCheckPoint()
+	{
 		lastCheckPoint = transform.position;
 	}
 
-	public void Kill() {
+	public void Kill()
+	{
 		transform.position = lastCheckPoint;
 	}
 
@@ -184,30 +187,75 @@ public class Lonk : MonoBehaviour {
 
 	public void Attack()
 	{
-		if (grounded || !currentSkills.Contains(SkillTypes.Boomerang))
+		if (grounded && IsHookAvailable())
 		{
-			if (currentSkills.Contains(SkillTypes.Sword) && swordOff.activeSelf == true)
-			{
-				swordOff.SetActive(false);
-				swordOn.SetActive(true);
-
-				var hits = Physics2D.OverlapCircleAll(swordOn.transform.position, 0.4f);
-
-				foreach (var hit in hits)
-				{
-					hit.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
-				}
-
-				Invoke("ResetSword", 0.2f);
-			}
+			LaunchHook();
 		}
 		else
 		{
-			if (currentSkills.Contains(SkillTypes.Boomerang) && boomerangOff.activeSelf == true) {
-				boomerangOff.SetActive(false);
-				boomerangOn.SetActive(true);
-				boomerangOn.SendMessage("Throw", gameObject, SendMessageOptions.DontRequireReceiver);
+			if (grounded || !currentSkills.Contains(SkillTypes.Boomerang))
+			{
+				if (currentSkills.Contains(SkillTypes.Sword) && swordOff.activeSelf == true)
+				{
+					swordOff.SetActive(false);
+					swordOn.SetActive(true);
+
+					var hits = Physics2D.OverlapCircleAll(swordOn.transform.position, 0.4f);
+
+					foreach (var hit in hits)
+					{
+						hit.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+					}
+
+					Invoke("ResetSword", 0.2f);
+				}
 			}
+			else
+			{
+				if (currentSkills.Contains(SkillTypes.Boomerang) && boomerangOff.activeSelf == true) {
+					boomerangOff.SetActive(false);
+					boomerangOn.SetActive(true);
+					boomerangOn.SendMessage("Throw", gameObject, SendMessageOptions.DontRequireReceiver);
+				}
+			}
+		}
+	}
+
+	HookSurface hookHit;
+
+	private void LaunchHook()
+	{
+		control.enabled = false;
+		hookOn.SetActive(true);
+		hookOff.SetActive(false);
+		hookOn.transform.position = transform.position;
+		var sequence = DOTween.Sequence();
+		sequence.Append(hookOn.transform.DOMoveY(hookHit.transform.position.y - 0.5f, 0.3f).SetEase(Ease.Linear));
+		sequence.AppendCallback(() => hookOn.SendMessage("Cling"));
+		sequence.Append(transform.DOMoveY(hookHit.transform.position.y-0.75f, 1f));
+		sequence.AppendCallback(() => verticalSpeed = 0);
+		sequence.AppendCallback(() => control.enabled = true);
+		sequence.AppendCallback(() => hookOn.SendMessage("Uncling"));
+		sequence.AppendCallback(() => {
+			hookOn.SetActive(false);
+			hookOff.SetActive(true);
+		});
+	}
+
+	private bool IsHookAvailable()
+	{
+		if (currentSkills.Contains(SkillTypes.Hook))
+		{
+			hookHit = null;
+			float hookLength = 5;
+			var hit = Physics2D.Raycast(transform.position, Vector3.up, hookLength, layerMask.value).collider;
+			if (hit) {
+				hookHit = hit.gameObject.GetComponent<HookSurface>();
+			}
+			return hookHit != null;
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -234,20 +282,24 @@ public class Lonk : MonoBehaviour {
 
 	public void Jump()
 	{
-		if (!jumpDisabled) {
-			bool overGround = false;
+		bool overGround = false;
 
-			TryMove(Vector3.down, () => { overGround = false; }, () => { overGround = true; }, false);
-		
-			if (overGround) {
-				TryMove(Vector3.up, () =>
-				{
-					verticalSpeed = maxJumpSpeed;
-					animator.SetFloat("hspeed", walkSpeed);
-				},
-				Stop
-				);
-			}
+		TryMove(Vector3.down, () => { overGround = false; }, () => { overGround = true; }, false);
+
+		var jumpFactor = 1f;
+		if (jumpDisabled)
+		{
+			jumpFactor = 0.25f;
+		}
+
+		if (overGround) {
+			TryMove(Vector3.up, () =>
+			{
+				verticalSpeed = maxJumpSpeed * jumpFactor;
+				animator.SetFloat("hspeed", walkSpeed);
+			},
+			Stop
+			);
 		}
 	}
 

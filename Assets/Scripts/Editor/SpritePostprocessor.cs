@@ -11,9 +11,13 @@ public class SpritePostprocessor : AssetPostprocessor
         {
             TextureImporter importer = assetImporter as TextureImporter;
             importer.anisoLevel = 0;
-            importer.spriteImportMode = SpriteImportMode.Multiple;
-            importer.spritePixelsPerUnit = 8;
-            importer.wrapMode = TextureWrapMode.Clamp;
+			importer.wrapMode = TextureWrapMode.Clamp;
+			importer.spriteImportMode = SpriteImportMode.Multiple;
+			if (assetImporter.assetPath.Contains("Tiles")) {
+				importer.wrapMode = TextureWrapMode.Repeat;
+				importer.spriteImportMode = SpriteImportMode.Single;
+			}
+			importer.spritePixelsPerUnit = 8;
             importer.mipmapEnabled = false;
             importer.filterMode = FilterMode.Point;
             importer.textureCompression = TextureImporterCompression.Uncompressed;
