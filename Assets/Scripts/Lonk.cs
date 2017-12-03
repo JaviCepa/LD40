@@ -289,7 +289,7 @@ public class Lonk : MonoBehaviour {
 		var jumpFactor = 1f;
 		if (jumpDisabled)
 		{
-			jumpFactor = 0.25f;
+			jumpFactor = 0.4f;
 		}
 
 		if (overGround) {
