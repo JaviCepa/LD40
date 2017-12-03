@@ -61,18 +61,18 @@ public class Lonk : MonoBehaviour {
 	private void Update()
 	{
 
-		TryMove(Vector3.down * 1.1f,
+		TryMove(Vector3.down * 1.1f * 1.02f,
 			() => { grounded = false; },
 			() => { grounded = true; },
 			false);
 		animator.SetBool("grounded", grounded);
 
-		TryMove(Vector3.down,
+		TryMove(Vector3.down*1.02f,
 			() => { },
 			() => { if (verticalSpeed < 0) { verticalSpeed = 0; } }
 		);
 		
-		TryMove(Vector3.up*Mathf.Sign(verticalSpeed),
+		TryMove(Vector3.up*0.7f*Mathf.Sign(verticalSpeed) * 1.02f,
 			() => {
 				transform.position += Vector3.up * verticalSpeed * Time.fixedDeltaTime;
 				verticalSpeed -= gravity;
@@ -90,13 +90,14 @@ public class Lonk : MonoBehaviour {
 		money++;
 	}
 
-	internal void PickTreasure(GameObject treasure, SkillTypes skill)
+	internal void PickTreasure(GameObject treasure, SkillTypes skill, string nameToDisplay="")
 	{
 		control.enabled = false;
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.OutQuad));
 		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position-Vector3.forward, Quaternion.identity, treasure.transform));
+		sequence.AppendCallback(() => { if (nameToDisplay != "") { TreasureTextManager.DisplayMessage(nameToDisplay); } } );
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
 		sequence.AppendCallback(() => animator.SetBool("treasure", false));
@@ -284,7 +285,7 @@ public class Lonk : MonoBehaviour {
 	{
 		bool overGround = false;
 
-		TryMove(Vector3.down, () => { overGround = false; }, () => { overGround = true; }, false);
+		TryMove(Vector3.down * 1.02f, () => { overGround = false; }, () => { overGround = true; }, false);
 
 		var jumpFactor = 1f;
 		if (jumpDisabled)
@@ -293,8 +294,9 @@ public class Lonk : MonoBehaviour {
 		}
 
 		if (overGround) {
-			TryMove(Vector3.up, () =>
+			TryMove(Vector3.up*0.5f, () =>
 			{
+				//transform.position+=Vector3.up*1f/8f;
 				verticalSpeed = maxJumpSpeed * jumpFactor;
 				animator.SetFloat("hspeed", walkSpeed);
 			},
@@ -375,4 +377,4 @@ public class Lonk : MonoBehaviour {
 
 }
 
-public enum SkillTypes { None, Sword, Boomerang, Bomb, Shovel, Bag, Hook, Rod, Anvil, Gem, Shield }
+public enum SkillTypes { None, Sword, Boomerang, Bomb, Shovel, Bag, Hook, Rod, Anvil, Gem, Shield, Princess }

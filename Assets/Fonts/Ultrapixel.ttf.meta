@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 196b4941640dfc94898e1f9990a637d9
+timeCreated: 1512311721
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 256
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ultrapixel
+  fontNames:
+  - Ultrapixel
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 1
+  ascentCalculationMode: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
