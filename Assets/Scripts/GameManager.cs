@@ -29,13 +29,13 @@ public class GameManager : MonoBehaviour {
 				break;
 			case EndingTypes.Princess:
 				break;
-			case EndingTypes.Dragon:
-				break;
 			case EndingTypes.Treasure:
 				break;
 			case EndingTypes.Fishing:
 				break;
 			case EndingTypes.LavaPit:
+				break;
+			case EndingTypes.Dragon:
 				break;
 			default:
 				Debug.Log("Ending not defined");
