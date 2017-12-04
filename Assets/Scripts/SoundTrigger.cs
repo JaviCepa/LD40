@@ -6,6 +6,8 @@ public class SoundTrigger : MonoBehaviour {
 
 	AudioSource source;
 
+	public AudioSource sourceToStop;
+
 	bool playing=false;
 
 	void Awake()
@@ -19,6 +21,9 @@ public class SoundTrigger : MonoBehaviour {
 		{
 			playing = true;
 			source.Play();
+			if (sourceToStop!=null) {
+				sourceToStop.Stop();
+			}
 		}
 	}
 	
