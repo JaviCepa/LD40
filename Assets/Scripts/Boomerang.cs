@@ -22,7 +22,7 @@ public class Boomerang : MonoBehaviour {
 	}
 
 	void Update () {
-		transform.localEulerAngles += Vector3.forward * Time.fixedDeltaTime * rotationSpeed;
+		transform.localEulerAngles += Vector3.forward * Time.deltaTime * rotationSpeed;
 		if (target != null) {
 			var error = target.transform.position-transform.position;
 			transform.position += error.normalized * returnSpeed;

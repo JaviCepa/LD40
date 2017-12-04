@@ -57,6 +57,8 @@ public class Lonk : MonoBehaviour {
 	public AudioSource shovelSound;
 	public AudioSource dieSound;
 
+	float customDelta { get { return Time.smoothDeltaTime; } }
+
 	public void PlayFootstep() {
 		if (jumpDisabled) {
 			swimSound.pitch = 1.2f + Random.Range(-0.2f, 0.2f);
@@ -94,8 +96,8 @@ public class Lonk : MonoBehaviour {
 		
 		TryMove(Vector3.up*0.7f*Mathf.Sign(verticalSpeed) * 1.02f,
 			() => {
-				transform.position += Vector3.up * verticalSpeed * Time.fixedDeltaTime;
-				verticalSpeed -= gravity;
+				transform.position += Vector3.up * verticalSpeed * customDelta;
+				verticalSpeed -= gravity*Time.deltaTime/0.01666667f;
 				if (verticalSpeed < verticalSpeedLimit) { verticalSpeed = verticalSpeedLimit; }
 			},
 			() => { verticalSpeed = 0; verticalSpeed -= gravity; }
@@ -160,7 +162,10 @@ public class Lonk : MonoBehaviour {
 
 	private void ActivateSkill(SkillTypes skillType)
 	{
-		maxJumpSpeed--;
+		if (skillType!=SkillTypes.Shield)
+		{
+			maxJumpSpeed--;
+		}
 		currentSkills.Add(skillType);
 	}
 
@@ -347,7 +352,7 @@ public class Lonk : MonoBehaviour {
 		{
 			TryMove(Vector3.left * colliderWidth, () =>
 			{
-				transform.position += Vector3.left * Time.fixedDeltaTime * walkSpeed;
+				transform.position += Vector3.left * customDelta * walkSpeed;
 				transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
 				animator.SetFloat("hspeed", walkSpeed);
 			},
@@ -365,7 +370,7 @@ public class Lonk : MonoBehaviour {
 		if (!shielded) {
 			TryMove(Vector3.right * colliderWidth, () =>
 			{
-				transform.position += Vector3.right * Time.fixedDeltaTime * walkSpeed;
+				transform.position += Vector3.right * customDelta * walkSpeed;
 				transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
 				animator.SetFloat("hspeed", walkSpeed);
 			},
