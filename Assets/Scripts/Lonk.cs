@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,6 +46,26 @@ public class Lonk : MonoBehaviour {
 
 	[HideInInspector]public bool grounded;
 	public bool jumpDisabled=false;
+
+	public AudioSource swimSound;
+	public AudioSource footstepsSound;
+	public AudioSource swordSound;
+	public AudioSource boomerangSound;
+	public AudioSource hookSound;
+	public AudioSource jumpSound;
+	public AudioSource itemSound;
+	public AudioSource shovelSound;
+	public AudioSource dieSound;
+
+	public void PlayFootstep() {
+		if (jumpDisabled) {
+			swimSound.pitch = 1.2f + Random.Range(-0.2f, 0.2f);
+			swimSound.Play();
+		} else {
+			footstepsSound.pitch = 1.5f + Random.Range(-0.1f, 0.1f);
+			footstepsSound.Play();
+		}
+	}
 
 	void Splash() {
 		splashPs.Emit(10);
@@ -97,6 +117,7 @@ public class Lonk : MonoBehaviour {
 		sequence.AppendCallback(() => animator.SetBool("treasure", true));
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.up * 1f, 1f).SetEase(Ease.OutQuad));
 		sequence.AppendCallback(() => Instantiate(itemCollectedParticlesPrefab, treasure.transform.position - Vector3.forward, Quaternion.identity, treasure.transform));
+		sequence.AppendCallback(() => itemSound.Play());
 		sequence.AppendCallback(() => { if (nameToDisplay != "") { TreasureTextManager.DisplayMessage(nameToDisplay); } });
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
@@ -133,6 +154,7 @@ public class Lonk : MonoBehaviour {
 
 	public void Kill()
 	{
+		dieSound.Play();
 		transform.position = lastCheckPoint;
 	}
 
@@ -176,7 +198,8 @@ public class Lonk : MonoBehaviour {
 			control.enabled = false;
 			shovelOff.SetActive(false);
 			shovelOn.SetActive(true);
-			sequence.Append(shovelOn.transform.DOLocalMoveY(1f/8f, 0.2f).SetLoops(3, LoopType.Restart).SetEase(Ease.InOutSine));
+			sequence.AppendCallback(() => { shovelSound.Play(); });
+			sequence.Append(shovelOn.transform.DOLocalMoveY(1f/8f, 0.2f).SetLoops(1, LoopType.Restart).SetEase(Ease.InOutSine));
 			sequence.AppendCallback(
 				() => {
 					var hits = Physics2D.OverlapCircleAll(transform.position + Vector3.down, 0.1f);
@@ -209,6 +232,7 @@ public class Lonk : MonoBehaviour {
 				{
 					swordOff.SetActive(false);
 					swordOn.SetActive(true);
+					swordSound.Play();
 
 					var hits = Physics2D.OverlapCircleAll(swordOn.transform.position, 0.4f);
 
@@ -225,6 +249,7 @@ public class Lonk : MonoBehaviour {
 				if (currentSkills.Contains(SkillTypes.Boomerang) && boomerangOff.activeSelf == true) {
 					boomerangOff.SetActive(false);
 					boomerangOn.SetActive(true);
+					boomerangSound.Play();
 					boomerangOn.SendMessage("Throw", gameObject, SendMessageOptions.DontRequireReceiver);
 				}
 			}
@@ -239,6 +264,7 @@ public class Lonk : MonoBehaviour {
 		hookOn.SetActive(true);
 		hookOff.SetActive(false);
 		hookOn.transform.position = transform.position;
+		hookSound.Play();
 		var sequence = DOTween.Sequence();
 		sequence.Append(hookOn.transform.DOMoveY(hookHit.transform.position.y - 0.5f, 0.3f).SetEase(Ease.Linear));
 		sequence.AppendCallback(() => hookOn.SendMessage("Cling"));
@@ -305,7 +331,8 @@ public class Lonk : MonoBehaviour {
 		if (overGround) {
 			TryMove(Vector3.up*0.5f, () =>
 			{
-				//transform.position+=Vector3.up*1f/8f;
+				jumpSound.pitch = 1f + Random.Range(-0.05f, 0.05f);
+				jumpSound.Play();
 				verticalSpeed = maxJumpSpeed * jumpFactor;
 				animator.SetFloat("hspeed", walkSpeed);
 			},

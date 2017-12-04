@@ -5,7 +5,9 @@ using UnityEngine;
 public class SoundTrigger : MonoBehaviour {
 
 	AudioSource source;
-	
+
+	bool playing=false;
+
 	void Awake()
 	{
 		source = GetComponent<AudioSource>();
@@ -13,7 +15,11 @@ public class SoundTrigger : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		source.Play();
+		if (!playing)
+		{
+			playing = true;
+			source.Play();
+		}
 	}
 	
 }

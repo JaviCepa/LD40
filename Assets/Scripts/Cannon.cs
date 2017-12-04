@@ -49,5 +49,6 @@ public class Cannon : MonoBehaviour {
 	private void EmitParticles()
 	{
 		ps.Emit(30);
+		GetComponent<AudioSource>().Play();
 	}
 }

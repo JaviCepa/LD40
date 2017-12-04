@@ -6,6 +6,7 @@ public class SplashEffect : MonoBehaviour {
 
 	public GameObject splishPrefab;
 	public GameObject splashPrefab;
+	
 
 	public float height=1;
 
