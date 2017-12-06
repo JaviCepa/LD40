@@ -11,21 +11,25 @@ public class Cannon : MonoBehaviour {
 	public GameObject trail;
 	public DOTweenPath path;
 
-	Vector3[] points;
+	bool fired=false;
+
+	Vector3[] pathPoints;
 
 	private void Update()
 	{
 		var collider = Physics2D.OverlapCircle(transform.position+Vector3.up*0.5f, 0.45f);
-		if (collider) {
-			Attach(collider.gameObject);
+		if (collider && !fired) {
+			Fire(collider.gameObject);
 		}
 	}
 
-	private void Attach(GameObject playerObject)
+	private void Fire(GameObject playerObject)
 	{
+		fired = true;
+		pathPoints = path.wps.ToArray();
 		lonkDummy.transform.position = playerObject.transform.position;
 		lonkDummy.SetActive(true);
-		Destroy(playerObject);
+		playerObject.SetActive(false);
 		var sequence = DOTween.Sequence();
 		sequence.Append(lonkDummy.transform.DOMove(transform.position + Vector3.up * 0.5f + (Vector3.up + Vector3.right) * 0.75f, 0.5f).SetEase(Ease.OutQuad));
 		sequence.Append(lonkDummy.transform.DOMove(transform.position + Vector3.up * 0.5f + Vector3.forward, 0.5f).SetEase(Ease.InQuad));
@@ -35,15 +39,22 @@ public class Cannon : MonoBehaviour {
 		sequence.Append(gameObject.transform.DOScale(1f, 0.1f).SetEase(Ease.OutBack));
 		sequence.AppendCallback(() => EmitParticles());
 		sequence.AppendCallback(() => trail.SetActive(true));
-		points = path.wps.ToArray();
 		sequence.AppendCallback(() => { lonkDummy.transform.localScale = Vector3.one; });
 		sequence.AppendCallback(() => FindObjectOfType<Com.LuisPedroFonseca.ProCamera2D.ProCamera2DShake>().Shake(0));
-		sequence.Append(lonkDummy.transform.DOPath(points, 5f).SetEase(Ease.OutExpo));
-		sequence.Join(lonkDummy.transform.DORotate(Vector3.forward * 360, 0.25f).SetLoops(10, LoopType.Restart).SetRelative(true).SetEase(Ease.Linear));
-		sequence.Join(lonkDummy.transform.DOScale(0.05f, 5f).SetEase(Ease.OutExpo));
-		sequence.AppendCallback(() => FindObjectOfType<Com.LuisPedroFonseca.ProCamera2D.ProCamera2DTransitionsFX>().TransitionExit());
-		sequence.AppendInterval(0.5f);
-		sequence.AppendCallback(()=>UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay"));
+		//sequence.Append(lonkDummy.transform.DOPath(points, 5f).SetEase(Ease.OutExpo));
+			sequence.AppendCallback(() => playerObject.SetActive(true));
+			sequence.Append(playerObject.transform.DOPath(pathPoints, 5f).SetEase(Ease.OutQuad));
+			sequence.Join(trail.transform.DOPath(pathPoints, 5f).SetEase(Ease.OutQuad));
+			//sequence.Join(playerObject.transform.DORotate(Vector3.forward * 360, 0.5f).SetLoops(10, LoopType.Restart).SetRelative(true).SetEase(Ease.Linear));
+		sequence.AppendCallback(() => playerObject.SetActive(true));
+		//sequence.Join(lonkDummy.transform.DORotate(Vector3.forward * 360, 0.25f).SetLoops(10, LoopType.Restart).SetRelative(true).SetEase(Ease.Linear));
+		//sequence.AppendCallback(() => playerObject.transform.localRotation = Quaternion.identity);
+		sequence.AppendInterval(3f);
+		sequence.AppendCallback(() => trail.SetActive(false));
+		//sequence.Join(lonkDummy.transform.DOScale(0.05f, 5f).SetEase(Ease.OutExpo));
+		//sequence.AppendCallback(() => FindObjectOfType<Com.LuisPedroFonseca.ProCamera2D.ProCamera2DTransitionsFX>().TransitionExit());
+		//sequence.AppendInterval(0.5f);
+		//sequence.AppendCallback(()=>UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay"));
 	}
 
 	private void EmitParticles()

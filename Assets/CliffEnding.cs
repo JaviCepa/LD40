@@ -11,7 +11,7 @@ public class CliffEnding : MonoBehaviour {
 		if (!open)
 		{
 			open = true;
-			Invoke("LoadEnding", 1);
+			LoadEnding();
 		}
 	}
 
