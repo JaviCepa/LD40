@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrincessEndTrigger : MonoBehaviour {
+public class CliffEnding : MonoBehaviour {
 
 	bool open=false;
 
@@ -17,15 +17,6 @@ public class PrincessEndTrigger : MonoBehaviour {
 
 	void LoadEnding()
 	{
-		Lonk lonk = FindObjectOfType<Lonk>();
-
-		if (lonk.currentSkills.Count == 0)
-		{
-			GameManager.LoadEnding(EndingTypes.Princess);
-		}
-		else {
-			GameManager.LoadEnding(EndingTypes.PrincessGood);
-		}
-
+		GameManager.LoadEnding(EndingTypes.Cliff);
 	}
 }

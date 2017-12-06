@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour {
 			case EndingTypes.Dragon:
 				instance.TransitionToEnding("DragonEnding");
 				break;
+			case EndingTypes.Cliff:
+				instance.TransitionToEnding("CliffEnding");
+				break;
+			case EndingTypes.PrincessGood:
+				instance.TransitionToEnding("PrincessGoodEnding");
+				break;
 			default:
 				Debug.Log("Ending not defined");
 				break;
@@ -64,4 +70,4 @@ public class GameManager : MonoBehaviour {
 }
 
 
-public enum EndingTypes { None, Anvil, Stairs, Princess, Dragon, Treasure, Fishing, LavaPit }
+public enum EndingTypes { None, Anvil, Stairs, Princess, Dragon, Treasure, Fishing, LavaPit, Cliff, PrincessGood }

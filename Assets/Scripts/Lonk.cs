@@ -196,7 +196,7 @@ public class Lonk : MonoBehaviour {
 
 	internal void Dig()
 	{
-		if (grounded && currentSkills.Contains(SkillTypes.Shovel) && shovelOff.activeSelf == true)
+		if (grounded && currentSkills.Contains(SkillTypes.Shovel) && shovelOff.activeSelf == true && !shovelOn.activeSelf)
 		{
 			var sequence = DOTween.Sequence();
 			var startPos=shovelOn.transform.localPosition;

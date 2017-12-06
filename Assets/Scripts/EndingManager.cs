@@ -13,7 +13,7 @@ public class EndingManager : MonoBehaviour {
 
 	public Text text;
 
-	static int totalEndingCount=6;
+	static int totalEndingCount=8;
 
 	void Start () {
 		Camera.main.gameObject.GetComponent<ProCamera2DTransitionsFX>().TransitionEnter();
