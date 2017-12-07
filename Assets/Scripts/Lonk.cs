@@ -162,10 +162,8 @@ public class Lonk : MonoBehaviour {
 
 	private void ActivateSkill(SkillTypes skillType)
 	{
-		if (skillType!=SkillTypes.Shield)
-		{
-			maxJumpSpeed--;
-		}
+		maxJumpSpeed--;
+		walkSpeed-=0.2f;
 		currentSkills.Add(skillType);
 	}
 
