@@ -15,11 +15,10 @@ public class Cannon : MonoBehaviour {
 
 	Vector3[] pathPoints;
 
-	private void Update()
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		var collider = Physics2D.OverlapCircle(transform.position+Vector3.up*0.5f, 0.45f);
-		if (collider && !fired) {
-			Fire(collider.gameObject);
+		if (collision.gameObject.GetComponent<Lonk>() != null && !fired) {
+			Fire(collision.gameObject);
 		}
 	}
 

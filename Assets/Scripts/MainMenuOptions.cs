@@ -21,7 +21,7 @@ public class MainMenuOptions : MonoBehaviour {
 	public void Play() {
 		var sequence = DOTween.Sequence();
 		sequence.Append(fader.DOFade(1, 0.5f));
-		sequence.AppendCallback(() => UnityEngine.SceneManagement.SceneManager.LoadScene("Intro"));
+		sequence.AppendCallback(() => UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay"));
 	}
 
 	public void Options() {
