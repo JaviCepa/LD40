@@ -271,7 +271,7 @@ public class Lonk : MonoBehaviour {
 		var sequence = DOTween.Sequence();
 		sequence.Append(hookOn.transform.DOMoveY(hookHit.transform.position.y - 0.5f, 0.3f).SetEase(Ease.Linear));
 		sequence.AppendCallback(() => hookOn.SendMessage("Cling"));
-		sequence.Append(transform.DOMoveY(hookHit.transform.position.y-0.75f, 1f));
+		sequence.Append(transform.DOMoveY(hookHit.transform.position.y - 0.75f, 1f));
 		sequence.AppendCallback(() => verticalSpeed = 0);
 		sequence.AppendCallback(() => control.enabled = true);
 		sequence.AppendCallback(() => hookOn.SendMessage("Uncling"));
@@ -286,7 +286,7 @@ public class Lonk : MonoBehaviour {
 		if (currentSkills.Contains(SkillTypes.Hook))
 		{
 			hookHit = null;
-			float hookLength = 5;
+			float hookLength = 7;
 			var hit = Physics2D.Raycast(transform.position, Vector3.up, hookLength, layerMask.value).collider;
 			if (hit) {
 				hookHit = hit.gameObject.GetComponent<HookSurface>();
