@@ -6,14 +6,14 @@ using UnityEngine;
 public class HookRenderer : MonoBehaviour {
 
 	LineRenderer lineRenderer;
-	Lonk lonk;
+	Hero owner;
 
 	bool clinged=false;
 	private Vector3 clingPosition;
 
 	void Awake() {
 		lineRenderer = GetComponent<LineRenderer>();
-		lonk = FindObjectOfType<Lonk>();
+		owner = FindObjectOfType<Hero>();
 	}
 
 	public void Cling() {
@@ -27,7 +27,7 @@ public class HookRenderer : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-		if (lonk==null || lineRenderer==null) { Awake(); }
+		if (owner == null || lineRenderer==null) { Awake(); }
 		if (!clinged)
 		{
 			lineRenderer.SetPosition(0, transform.position);
@@ -36,6 +36,6 @@ public class HookRenderer : MonoBehaviour {
 			lineRenderer.SetPosition(0, clingPosition);
 			transform.position = clingPosition;
 		}
-		lineRenderer.SetPosition(1, lonk.transform.position);
+		lineRenderer.SetPosition(1, owner.transform.position);
 	}
 }

@@ -14,20 +14,27 @@ public class TreasureItem : MonoBehaviour {
 	Vector3 startPosition;
 	bool picked=false;
 
+	public GameObject itemCollectedParticlesPrefab;
+
 	private void Start()
 	{
 		startPosition = transform.position;
 	}
 
-	private void OnTriggerStay2D(Collider2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Lonk picker = collision.gameObject.GetComponent<Lonk>();
+		Hero picker = collision.gameObject.GetComponent<Hero>();
 
 		if (picker != null && !picked) {
 			picked = true;
 			GetComponent<Collider2D>().enabled = false;
 			picker.PickTreasure(gameObject, skill, nameToDisplay);
+			Invoke("DisplayParticles", 1f);
 		}
+	}
+
+	void DisplayParticles() {
+		Instantiate(itemCollectedParticlesPrefab, transform.position - Vector3.forward, Quaternion.identity, transform);
 	}
 
 	private void Update()

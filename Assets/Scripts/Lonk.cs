@@ -47,15 +47,16 @@ public class Lonk : MonoBehaviour {
 	[HideInInspector]public bool grounded;
 	public bool jumpDisabled=false;
 
-	public AudioSource swimSound;
-	public AudioSource footstepsSound;
-	public AudioSource swordSound;
-	public AudioSource boomerangSound;
-	public AudioSource hookSound;
 	public AudioSource jumpSound;
+	public AudioSource dieSound;
+	public AudioSource swordSound;
+	public AudioSource hookSound;
+	public AudioSource boomerangSound;
 	public AudioSource itemSound;
 	public AudioSource shovelSound;
-	public AudioSource dieSound;
+
+	public AudioSource swimSound;
+	public AudioSource footstepsSound;
 
 	float customDelta { get { return Time.smoothDeltaTime; } }
 
