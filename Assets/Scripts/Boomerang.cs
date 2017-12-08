@@ -31,12 +31,16 @@ public class Boomerang : MonoBehaviour {
 			}
 		}
 
-		var impactHit=Physics2D.OverlapCircle(transform.position, 0.4f);
-		if (impactHit!=null)
+		var impactHits=Physics2D.OverlapCircleAll(transform.position, 0.25f);
+		foreach (var impactHit in impactHits)
+		{
+			if (impactHit != null)
 			{
-			var impact = impactHit.gameObject;
-			if (impact!=null) {
-				impact.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+				var impact = impactHit.gameObject;
+				if (impact != null)
+				{
+					impact.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+				}
 			}
 		}
 	}
