@@ -237,7 +237,7 @@ public class Lonk : MonoBehaviour {
 					swordOn.SetActive(true);
 					swordSound.Play();
 
-					var hits = Physics2D.OverlapCircleAll(swordOn.transform.position, 0.4f);
+					var hits = Physics2D.OverlapCircleAll(swordOn.transform.position, 0.2f);
 
 					foreach (var hit in hits)
 					{
