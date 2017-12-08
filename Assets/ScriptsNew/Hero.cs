@@ -29,8 +29,16 @@ public class Hero : MonoBehaviour
 		airMovement = GetComponentInChildren<AirMovement_Variable>();
 	}
 
-	internal void PickTreasure(GameObject treasure, SkillTypes skill, string nameToDisplay = "")
+	private void Update()
 	{
+		if (character.Input.RunButton == ButtonState.DOWN) {
+			Attack();
+		}
+	}
+
+	internal void PickTreasure(GameObject treasure, SkillTypes skillType, string nameToDisplay = "")
+	{
+		Debug.Log("Pick treasure " + skillType.ToString());
 		character.InputEnabled = false;
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => character.ForceAnimation(PlatformerPro.AnimationState.PICKUP, 2f));
@@ -38,28 +46,25 @@ public class Hero : MonoBehaviour
 		sequence.AppendCallback(() => { if (nameToDisplay != "") { TreasureTextManager.DisplayMessage(nameToDisplay); } });
 		sequence.AppendInterval(1.0f);
 		sequence.Append(treasure.transform.DOMove(transform.position + Vector3.forward * 0.5f, 0.5f).SetEase(Ease.InQuad));
-		sequence.AppendCallback(() => Destroy(treasure));
+		sequence.AppendCallback(() => ActivateSkill(skillType));
 		sequence.AppendCallback(() => character.InputEnabled = true);
-		sequence.AppendCallback(() => ActivateSkill(skill));
+		sequence.AppendCallback(() => Destroy(treasure));
 	}
 	
 	private void ActivateSkill(SkillTypes skillType)
 	{
+		currentSkills.Add(skillType);
+		MakeItemAvailable(skillType);
 		groundMovement.speed -= 0.2f;
 		airMovement.maxJumpHeight -= 0.5f;
 		airMovement.minJumpHeight = Mathf.Max(airMovement.maxJumpHeight - 2f, 0);
-		
-		currentSkills.Add(skillType);
-		MakeItemAvailable(skillType);
 	}
-
-
+	
 	private void MakeItemAvailable(SkillTypes skillType)
 	{
-
 		foreach (var characterItem in GetComponentsInChildren<CharacterItem>())
 		{
-			if (skillType.ToString() == characterItem.name)
+			if (skillType.ToString() == characterItem.gameObject.name)
 			{
 				characterItem.MakeAvailable();
 			}
@@ -81,7 +86,7 @@ public class Hero : MonoBehaviour
 	{
 		foreach (var characterItem in GetComponentsInChildren<CharacterItem>())
 		{
-			if (characterItem.name == skillType.ToString())
+			if (characterItem.gameObject.name == skillType.ToString())
 			{
 				characterItem.Use();
 				return characterItem;
@@ -94,7 +99,7 @@ public class Hero : MonoBehaviour
 	{
 		foreach (var characterItem in GetComponentsInChildren<CharacterItem>())
 		{
-			if (characterItem.name == skillType.ToString())
+			if (characterItem.gameObject.name == skillType.ToString())
 			{
 				characterItem.Withdraw();
 			}

@@ -23,6 +23,7 @@ public class TreasureItem : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		Debug.Log("Trigger "+name);
 		Hero picker = collision.gameObject.GetComponent<Hero>();
 
 		if (picker != null && !picked) {

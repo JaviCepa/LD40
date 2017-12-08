@@ -8,8 +8,11 @@ public class Boomerang : MonoBehaviour {
 	public float rotationSpeed=10;
 	public float returnSpeed=0.1f;
 	GameObject target;
+	private bool fired;
 
-	void Throw(GameObject launcher) {
+	void Throw(GameObject launcher)
+	{
+		fired = true;
 		target = null;
 		var forward = Vector3.right * Mathf.Sign(launcher.transform.localScale.x);
 		transform.position = launcher.transform.position + 0.5f * forward;
@@ -19,27 +22,34 @@ public class Boomerang : MonoBehaviour {
 
 	void Return(GameObject launcher) {
 		target = launcher;
+		fired = false;
 	}
 
-	void Update () {
-		transform.localEulerAngles += Vector3.forward * Time.deltaTime * rotationSpeed;
-		if (target != null) {
-			var error = target.transform.position-transform.position;
-			transform.position += error.normalized * returnSpeed;
-			if (error.magnitude < 0.5f) {
-				FindObjectOfType<Lonk>().RecoverBoomerang();
-			}
-		}
-
-		var impactHits=Physics2D.OverlapCircleAll(transform.position, 0.25f);
-		foreach (var impactHit in impactHits)
+	void Update ()
+	{
+		if (fired)
 		{
-			if (impactHit != null)
+			transform.localEulerAngles += Vector3.forward * Time.deltaTime * rotationSpeed;
+
+			if (target != null)
 			{
-				var impact = impactHit.gameObject;
-				if (impact != null)
+				var error = target.transform.position-transform.position;
+				transform.position += error.normalized * returnSpeed;
+				if (error.magnitude < 0.5f) {
+					FindObjectOfType<Lonk>().RecoverBoomerang();
+				}
+			}
+
+			var impactHits = Physics2D.OverlapCircleAll(transform.position, 0.25f);
+			foreach (var impactHit in impactHits)
+			{
+				if (impactHit != null)
 				{
-					impact.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+					var impact = impactHit.gameObject;
+					if (impact != null)
+					{
+						impact.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+					}
 				}
 			}
 		}
