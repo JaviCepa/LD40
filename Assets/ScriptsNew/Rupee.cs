@@ -16,7 +16,6 @@ public class Rupee : MonoBehaviour {
 		if (!picked)
 		{
 			picked = true;
-			var target = FindObjectOfType<Hero>();
 			var sequence = DOTween.Sequence();
 			sequence.Append(transform.DOMove(transform.position+Vector3.up, 0.25f).SetEase(Ease.OutExpo));
 			sequence.Join(transform.DOScale(1.5f, 0.25f).SetEase(Ease.OutExpo));

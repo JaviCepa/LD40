@@ -7,8 +7,14 @@ public class Switch : MonoBehaviour {
 	public GameObject target;
 
 	bool used = false;
-	
-	void OnDamage(int amount) {
+
+	private void Start()
+	{
+		GetComponent<Collider2D>().isTrigger = true;
+	}
+
+	void OnDamage(int amount)
+	{
 		if (!used)
 		{
 			used = true;
