@@ -7,7 +7,7 @@ public class Slashable : MonoBehaviour {
 
 	public int health = 1;
 
-	void Damage(int amount) {
+	void OnDamage(int amount) {
 		health -= amount;
 		if (health <= 0) {
 			var sequence = DOTween.Sequence();

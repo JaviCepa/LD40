@@ -6,8 +6,6 @@ public class MusicArea : MonoBehaviour {
 
 	AudioSource source;
 
-	bool playing=false;
-
 	void Awake()
 	{
 		source = GetComponent<AudioSource>();

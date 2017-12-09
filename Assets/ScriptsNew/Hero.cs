@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlatformerPro;
 using DG.Tweening;
+using System;
 
 public class Hero : MonoBehaviour
 {
 
 	[HideInInspector]public Character character;
-	Animator animator;
 	public List<SkillTypes> currentSkills;
 
 	GroundMovement_Digital groundMovement;
@@ -24,21 +24,33 @@ public class Hero : MonoBehaviour
 	private void Awake()
 	{
 		character = GetComponent<Character>();
-		animator = GetComponentInChildren<Animator>();
 		groundMovement = GetComponentInChildren<GroundMovement_Digital>();
 		airMovement = GetComponentInChildren<AirMovement_Variable>();
 	}
 
 	private void Update()
 	{
-		if (character.Input.RunButton == ButtonState.DOWN) {
-			Attack();
+		ProcessInput();
+	}
+
+	private void ProcessInput()
+	{
+		if (character.InputEnabled)
+		{
+			if (character.Input.RunButton == ButtonState.DOWN)
+			{
+				Attack();
+			}
+
+			if (character.Input.VerticalAxis < 0 && character.Grounded)
+			{
+				UseItem(SkillTypes.Shovel);
+			}
 		}
 	}
 
 	internal void PickTreasure(GameObject treasure, SkillTypes skillType, string nameToDisplay = "")
 	{
-		Debug.Log("Pick treasure " + skillType.ToString());
 		character.InputEnabled = false;
 		var sequence = DOTween.Sequence();
 		sequence.AppendCallback(() => character.ForceAnimation(PlatformerPro.AnimationState.PICKUP, 2f));
@@ -50,16 +62,38 @@ public class Hero : MonoBehaviour
 		sequence.AppendCallback(() => character.InputEnabled = true);
 		sequence.AppendCallback(() => Destroy(treasure));
 	}
-	
+
+	public void RemoveTreasure(SkillTypes skillType)
+	{
+		if (currentSkills.Contains(skillType))
+		{
+			currentSkills.Remove(skillType);
+			MakeItemUnavailable(skillType);
+			RemoveWeight();
+		}
+	}
+
 	private void ActivateSkill(SkillTypes skillType)
 	{
 		currentSkills.Add(skillType);
 		MakeItemAvailable(skillType);
+		AddWeight();
+	}
+
+	void AddWeight()
+	{
 		groundMovement.speed -= 0.2f;
 		airMovement.maxJumpHeight -= 0.5f;
 		airMovement.minJumpHeight = Mathf.Max(airMovement.maxJumpHeight - 2f, 0);
 	}
-	
+
+	void RemoveWeight()
+	{
+		groundMovement.speed += 0.2f;
+		airMovement.maxJumpHeight += 0.5f;
+		airMovement.minJumpHeight = Mathf.Max(airMovement.maxJumpHeight - 2f, 0);
+	}
+
 	private void MakeItemAvailable(SkillTypes skillType)
 	{
 		foreach (var characterItem in GetComponentsInChildren<CharacterItem>())
@@ -67,6 +101,17 @@ public class Hero : MonoBehaviour
 			if (skillType.ToString() == characterItem.gameObject.name)
 			{
 				characterItem.MakeAvailable();
+			}
+		}
+	}
+
+	private void MakeItemUnavailable(SkillTypes skillType)
+	{
+		foreach (var characterItem in GetComponentsInChildren<CharacterItem>())
+		{
+			if (skillType.ToString() == characterItem.gameObject.name)
+			{
+				characterItem.MakeUnavailable();
 			}
 		}
 	}
@@ -82,13 +127,13 @@ public class Hero : MonoBehaviour
 		transform.position = lastCheckPoint;
 	}
 
-	CharacterItem UseItem(SkillTypes skillType)
+	CharacterItem UseItem(SkillTypes skillType, UnityEngine.Object data = null)
 	{
 		foreach (var characterItem in GetComponentsInChildren<CharacterItem>())
 		{
 			if (characterItem.gameObject.name == skillType.ToString())
 			{
-				characterItem.Use();
+				characterItem.Use(data);
 				return characterItem;
 			}
 		}
@@ -125,11 +170,12 @@ public class Hero : MonoBehaviour
 
 	public void Attack()
 	{
-		if (currentSkills.Contains(SkillTypes.Boomerang))
+		if (currentSkills.Contains(SkillTypes.Hook))
 		{
-			if (IsHookSurfaceAvailable() != null)
+			var targetSurface = IsHookSurfaceAvailable();
+			if (targetSurface != null)
 			{
-				UseItem(SkillTypes.Hook);
+				UseItem(SkillTypes.Hook, targetSurface);
 				return;
 			}
 		}

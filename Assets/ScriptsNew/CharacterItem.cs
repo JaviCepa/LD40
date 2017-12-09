@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterItem : MonoBehaviour {
+public class CharacterItem : MonoBehaviour
+{
 	
 	public bool removeControlWhileInUse = false;
 	public float actionDuration = 0;
@@ -19,7 +21,7 @@ public class CharacterItem : MonoBehaviour {
 	private void Awake()
 	{
 		owner = GetComponentInParent<Hero>();
-		col2D = GetComponent<Collider2D>();
+		col2D = GetComponentInChildren<Collider2D>();
 		idleSprite = GetComponent<SpriteRenderer>();
 		soundOnUse = GetComponent<AudioSource>();
 		if (transform.childCount > 0)
@@ -34,7 +36,22 @@ public class CharacterItem : MonoBehaviour {
 		Withdraw();
 	}
 
-	public void Use()
+	public void MakeUnavailable()
+	{
+		available = false;
+		idleSprite.enabled = false;
+		if (activeSprite!=null)
+		{
+			activeSprite.enabled = false;
+		}
+		inUse = false;
+		if (col2D != null)
+		{
+			col2D.enabled = false;
+		}
+	}
+
+	public void Use(UnityEngine.Object data = null)
 	{
 		if (available && !inUse)
 		{
@@ -49,33 +66,31 @@ public class CharacterItem : MonoBehaviour {
 			if (soundOnUse != null) {
 				soundOnUse.Play();
 			}
-			col2D.enabled = true;
+			if (col2D != null)
+			{
+				col2D.enabled = true;
+			}
 			idleSprite.enabled = false;
 			activeSprite.enabled = true;
 			inUse = true;
-			OnUse();
+			OnUse(data);
 		}
 	}
 
 	public void Withdraw()
 	{
-		if (inUse)
+		if (col2D != null)
 		{
-			owner.character.InputEnabled = true;
-			col2D.enabled = true;
-			idleSprite.enabled = true;
-			activeSprite.enabled = false;
-			inUse = false;
-			OnWithdraw();
+			col2D.enabled = false;
 		}
+		owner.character.InputEnabled = true;
+		idleSprite.enabled = true;
+		activeSprite.enabled = false;
+		inUse = false;
+		OnWithdraw();
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		collision.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
-	}
-
-	protected virtual void OnUse() { }
+	protected virtual void OnUse(UnityEngine.Object data) { }
 	protected virtual void OnWithdraw() { }
 
 }

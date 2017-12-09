@@ -48,7 +48,7 @@ public class Boomerang : MonoBehaviour {
 					var impact = impactHit.gameObject;
 					if (impact != null)
 					{
-						impact.SendMessage("Damage", 1, SendMessageOptions.DontRequireReceiver);
+						impact.SendMessage("OnDamage", 1, SendMessageOptions.DontRequireReceiver);
 					}
 				}
 			}

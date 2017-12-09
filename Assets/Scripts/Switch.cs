@@ -8,7 +8,7 @@ public class Switch : MonoBehaviour {
 
 	bool used = false;
 	
-	void Damage(int amount) {
+	void OnDamage(int amount) {
 		if (!used)
 		{
 			used = true;
@@ -19,7 +19,7 @@ public class Switch : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Damage(1);
+		OnDamage(1);
 	}
 
 	private void OnDrawGizmos()

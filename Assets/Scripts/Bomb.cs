@@ -8,13 +8,14 @@ public class Bomb : MonoBehaviour {
 	public GameObject target;
 	public GameObject particles;
 
-	Lonk lonk;
+	Hero hero;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (lonk == null) { lonk = FindObjectOfType<Lonk>(); }
-		if (lonk.currentSkills.Contains(SkillTypes.Bomb))
+		if (hero == null) { hero = FindObjectOfType<Hero>(); }
+		if (hero.currentSkills.Contains(SkillTypes.Bomb))
 		{
+			hero.RemoveTreasure(SkillTypes.Bomb);
 			transform.localScale = Vector3.zero;
 			GetComponent<SpriteRenderer>().enabled = true;
 			var sequence = DOTween.Sequence();

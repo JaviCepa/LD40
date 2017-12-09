@@ -15,7 +15,7 @@ public class TrapDoor : MonoBehaviour {
 		jointTransform = transform.parent;
 	}
 
-	void Damage(int amount) {
+	void OnDamage(int amount) {
 		if (folded)
 		{
 			jointTransform.DORotate(Vector3.zero, fallTime).SetEase(Ease.OutBounce);
