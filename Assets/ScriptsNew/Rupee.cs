@@ -12,17 +12,16 @@ public class Rupee : MonoBehaviour {
 		picked = false;
 	}
 
-	void Bag (Bag container) {
+	void Bag (CharacterItem_Bag targetBag) {
 		if (!picked)
 		{
 			picked = true;
-			var target = FindObjectOfType<Lonk>();
+			var target = FindObjectOfType<Hero>();
 			var sequence = DOTween.Sequence();
 			sequence.Append(transform.DOMove(transform.position+Vector3.up, 0.25f).SetEase(Ease.OutExpo));
 			sequence.Join(transform.DOScale(1.5f, 0.25f).SetEase(Ease.OutExpo));
 			sequence.Append(transform.DOScaleX(0, 0.25f));
-			sequence.AppendCallback(() => target.AddRupee());
-			sequence.AppendCallback(() => container.currentAmount++);
+			sequence.AppendCallback(() => targetBag.currentAmount++);
 			sequence.AppendCallback(() => Destroy(gameObject));
 		}
 	}

@@ -7,12 +7,12 @@ using System;
 
 public class Hero : MonoBehaviour
 {
-
-	[HideInInspector]public Character character;
 	public List<SkillTypes> currentSkills;
 
-	GroundMovement_Digital groundMovement;
-	AirMovement_Variable airMovement;
+	[HideInInspector]public Character character;
+	[HideInInspector]public GroundMovement_Digital groundMovement;
+	[HideInInspector]public AirMovement_Variable airMovement;
+	
 	BasicAttacks basicAttacks;
 
 	private Vector3 lastCheckPoint;

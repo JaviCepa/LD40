@@ -8,7 +8,7 @@ public class StairsEndTrigger : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (!open && FindObjectOfType<Lonk>().maxJumpSpeed<=3)
+		if (!open && FindObjectOfType<Hero>().airMovement.maxJumpHeight <= 0.8f)
 		{
 			open = true;
 			Invoke("LoadEnding", 5);

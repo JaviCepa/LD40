@@ -13,8 +13,7 @@ public class MusicArea : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		//Debug.Log("Playing: "+source.clip.name);
-		if (collision.gameObject.GetComponent<Lonk>() != null)
+		if (collision.gameObject.GetComponent<Hero>() != null)
 		{
 			source.Play();
 		}
@@ -23,8 +22,7 @@ public class MusicArea : MonoBehaviour {
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		//Debug.Log("Stopping: " + source.clip.name);
-		if (collision.gameObject.GetComponent<Lonk>() != null)
+		if (collision.gameObject.GetComponent<Hero>() != null)
 		{
 			source.Stop();
 		}

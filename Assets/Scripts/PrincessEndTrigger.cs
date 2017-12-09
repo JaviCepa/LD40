@@ -17,9 +17,9 @@ public class PrincessEndTrigger : MonoBehaviour {
 
 	void LoadEnding()
 	{
-		Lonk lonk = FindObjectOfType<Lonk>();
+		Hero hero = FindObjectOfType<Hero>();
 
-		if (lonk.currentSkills.Contains(SkillTypes.Shield))
+		if (hero.currentSkills.Contains(SkillTypes.Shield))
 		{
 			GameManager.LoadEnding(EndingTypes.PrincessWeapon);
 		}

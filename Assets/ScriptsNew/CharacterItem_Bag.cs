@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bag : MonoBehaviour {
+public class CharacterItem_Bag : CharacterItem {
 
 	public int maxAmount=5;
 	public int currentAmount=0;
@@ -18,5 +18,4 @@ public class Bag : MonoBehaviour {
 			}
 		}
 	}
-	
 }
