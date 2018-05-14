@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -17,7 +17,9 @@ public class Cannon : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.GetComponent<Hero>() != null && !fired) {
+		Debug.Log("Entered cannon");
+		if (collision.gameObject.GetComponent<Hero>() != null && !fired)
+		{
 			Fire(collision.gameObject);
 		}
 	}

@@ -113,7 +113,7 @@ namespace PlatformerPro
 			{
 				try
 				{
-#if UNITY_5
+#if UNITY_5_3_OR_NEWER
 					// TODO: this forces movements to be in the same namespace as this, look to fix!
 					System.Type type = this.GetType().Assembly.GetType(this.GetType().Namespace + "." + MovementType);
 					implementation = (Movement)gameObject.AddComponent(type);

@@ -77,6 +77,8 @@ namespace PlatformerPro
 		/// <param name="args">Arguments.</param>
 		protected void AnimationStateChanged( object sender, AnimationEventArgs args)
 		{
+			// Stop warnings in Unity 2017
+			if (!myAnimator.isActiveAndEnabled) return;
 			if (currentOverride != args.OverrideState)
 			{
 				currentOverride = args.OverrideState;

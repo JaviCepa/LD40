@@ -301,7 +301,7 @@ namespace PlatformerPro
 			{
 				float newHeight = ((BoxCollider2D)hurtBoxCollider).size.y / shrinkHurtBoxFactor;
 				float difference = ((BoxCollider2D)hurtBoxCollider).size.y - newHeight;
-#if UNITY_5
+#if UNITY_5_3_OR_NEWER
 				((BoxCollider2D)hurtBoxCollider).offset = new Vector2(((BoxCollider2D)hurtBoxCollider).Offset().x, ((BoxCollider2D)hurtBoxCollider).Offset().y - (difference / 2.0f));
 #else
 				((BoxCollider2D)hurtBoxCollider).center = new Vector2(((BoxCollider2D)hurtBoxCollider).Offset().x, ((BoxCollider2D)hurtBoxCollider).Offset().y - (difference / 2.0f));
@@ -324,7 +324,7 @@ namespace PlatformerPro
 			{
 				float newHeight = ((BoxCollider2D)hurtBoxCollider).size.y * shrinkHurtBoxFactor;
 				float difference = newHeight - ((BoxCollider2D)hurtBoxCollider).size.y;
-#if UNITY_5
+#if UNITY_5_3_OR_NEWER
 				((BoxCollider2D)hurtBoxCollider).offset = new Vector2(((BoxCollider2D)hurtBoxCollider).Offset().x, ((BoxCollider2D)hurtBoxCollider).Offset().y + (difference / 2.0f));
 #else
 				((BoxCollider2D)hurtBoxCollider).center = new Vector2(((BoxCollider2D)hurtBoxCollider).Offset().x, ((BoxCollider2D)hurtBoxCollider).Offset().y + (difference / 2.0f));

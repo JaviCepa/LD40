@@ -35,7 +35,7 @@ namespace PlatformerPro
 		/// <summary>
 		/// The version as a string.
 		/// </summary>
-		const string VERSION = "v1.2.1";
+		const string VERSION = "v1.2.2";
 
 		/// <summary>
 		/// Cache show on startup state.

@@ -101,6 +101,8 @@ namespace PlatformerPro
 			Init ();
 		}
 
+
+
 		/// <summary>
 		/// Init this instance.
 		/// </summary>
@@ -152,6 +154,7 @@ namespace PlatformerPro
 			lastDigitalVerticalAxisState = VerticalAxisDigital;
 			//lastDigitalAltHorizontalAxisState = AltHorizontalAxisDigital;
 			//lastDigitalAltVerticalAxisState = AltVerticalAxisDigital;
+		
 		}
 
 		/// <summary>

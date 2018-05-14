@@ -191,7 +191,7 @@ namespace PlatformerPro
 				}
 			}
 #if UNITY_EDITOR
-	#if UNITY_5
+	#if UNITY_5_3_OR_NEWER
 			// In editor mode build a list of handled states for error messaging and the like
 			if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
 			{
@@ -260,7 +260,7 @@ namespace PlatformerPro
 					myAnimator.SetFloat("GunPositionY",aimDirection.y);
 
 #if UNITY_EDITOR
-	#if UNITY_5
+	#if UNITY_5_3_OR_NEWER
 					// In editor mode check that the state is present
 					if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
 					{
@@ -301,7 +301,7 @@ namespace PlatformerPro
 				else
 				{
 #if UNITY_EDITOR
-	#if UNITY_5
+	#if UNITY_5_3_OR_NEWER
 					// In editor mode check that the state is present
 					if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
 					{
@@ -337,7 +337,7 @@ namespace PlatformerPro
 						myAnimator.SetFloat("GunPositionX",aimDirection.x);
 						myAnimator.SetFloat("GunPositionY",aimDirection.y);
 #if UNITY_EDITOR
-	#if UNITY_5
+	#if UNITY_5_3_OR_NEWER
 						// In editor mode check that the state is present
 						if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
 						{
@@ -377,7 +377,7 @@ namespace PlatformerPro
 					else
 					{
 #if UNITY_EDITOR
-	#if UNITY_5
+	#if UNITY_5_3_OR_NEWER
 						// In editor mode check that the state is present
 						if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
 						{

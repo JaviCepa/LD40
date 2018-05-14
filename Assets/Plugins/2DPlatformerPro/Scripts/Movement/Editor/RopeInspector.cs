@@ -131,7 +131,7 @@ namespace PlatformerPro
 					BoxCollider2D boxCollider = ropeSectionGo.AddComponent<BoxCollider2D>();
 					// Default to a 0.5f wide box collider
 					boxCollider.size = new Vector2(0.5f, 0.5f / segmentLength);
-#if UNITY_5
+#if UNITY_5_3_OR_NEWER
 					boxCollider.offset = new Vector2(0, -0.5f);
 #else
 					boxCollider.center = new Vector2(0, -0.5f);

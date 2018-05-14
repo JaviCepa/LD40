@@ -28,7 +28,7 @@ namespace PlatformerPro
 		/// <param name="box">Box.</param>
 		public static Vector2 Offset(this BoxCollider2D box)
 		{
-#if UNITY_5
+#if UNITY_5_3_OR_NEWER
 			return box.offset;
 #else
 			return box.center;

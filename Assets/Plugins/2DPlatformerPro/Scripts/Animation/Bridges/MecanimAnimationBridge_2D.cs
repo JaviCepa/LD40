@@ -155,7 +155,7 @@ namespace PlatformerPro
 			TimeManager.Instance.GameUnPaused += HandleGameUnPaused;
 
 #if UNITY_EDITOR
-	#if UNITY_5
+		#if UNITY_5_3_OR_NEWER
 			
 			// In editor mode build a list of handled states for error messaging and the like
 			if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
@@ -214,7 +214,7 @@ namespace PlatformerPro
 		protected void AnimationStateChanged( object sender, AnimationEventArgs args)
 		{
 #if UNITY_EDITOR
-	#if UNITY_5
+	#if UNITY_5_3_OR_NEWER
 			// In editor mode check that the state is present
 			if (myAnimator.runtimeAnimatorController is UnityEditor.Animations.AnimatorController)
 			{
