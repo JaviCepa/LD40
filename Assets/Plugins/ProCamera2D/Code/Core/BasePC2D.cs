@@ -85,7 +85,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
         void ResetAxisFunctions()
         {
-            if (Vector3H != null || _pc2D == null)
+            if (Vector3H != null || ProCamera2D == null)
                 return;
 
             switch (_pc2D.Axis)

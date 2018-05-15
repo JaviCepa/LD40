@@ -103,8 +103,8 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 			}
 
 			ProCamera2D.CameraTargetPositionSmoothed = new Vector2(
-				horizontalExtra ? Vector3H(ProCamera2D.LocalPosition) + horizontalDeltaMovement : Vector3H(ProCamera2D.CameraTargetPositionSmoothed),
-				verticalExtra ? Vector3V(ProCamera2D.LocalPosition) + verticalDeltaMovement : Vector3V(ProCamera2D.CameraTargetPositionSmoothed));
+				horizontalExtra ? Vector3H(ProCamera2D.CameraTargetPositionSmoothed) + horizontalDeltaMovement - Vector3H(originalDelta) : Vector3H(ProCamera2D.CameraTargetPositionSmoothed),
+				verticalExtra ? Vector3V(ProCamera2D.CameraTargetPositionSmoothed) + verticalDeltaMovement - Vector3V(originalDelta) : Vector3V(ProCamera2D.CameraTargetPositionSmoothed));
 
 			return VectorHV(horizontalDeltaMovement, verticalDeltaMovement);
 		}

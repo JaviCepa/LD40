@@ -37,6 +37,28 @@ Twitter - http://www.twitter.com/lpfonseca
 
 ## CHANGELOG ##
 
+2.6.2
+- PanAndZoom - (Mobile) Fixed a slight pan movement that could occur while moving over uGUI
+- PanAndZoom - Fixed the stutter that occured if there was a global offset applied to the core component
+- ZoomToFit - Set the initial screen size from the core component for improved consistency
+
+2.6.1
+- PanAndZoom - Replaced platform dependent compilation with touch support verification for improved compatibility
+- PanAndZoom - Added Pan start and finish events
+- Triggers - Improved support for multi-scenes setups
+
+2.6.0
+- Unity 2018.1 - Added support for the latest beta
+- Timeline - Added Timeline actions for adding and removing camera targets
+- Cinematics - Fixed stuttering that occured with the final step of the cinematic when used together with the NumericBoundaries extension
+
+2.5.5
+- Core - Fixed null reference that could occur if an extension was not initialized properly due to the randomized script execution order
+
+2.5.4
+- LimitDistance - (Regression) Fixed incorrect reset of the smoothed camera position which could interfere with other extensions dependent on it
+- PanAndZoom - Added two booleans (IsZooming and IsPanning) to know when the camera is zooming and/or panning
+
 2.5.3
 - PanAndZoom - Fixed bug that occurred on mobile when activating the extension at a later stage rather than at start
 - PixelPerfectSprite - Fixed errors that could occur if there was no PixelPerfect extension enabled

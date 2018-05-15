@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicArea : MonoBehaviour {
+public class MusicArea : TriggerArea {
 
 	AudioSource source;
 
@@ -18,7 +18,6 @@ public class MusicArea : MonoBehaviour {
 			source.Play();
 		}
 	}
-
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{

@@ -30,7 +30,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
 		bool _triggerEnabled;
 
-		override protected void Awake()
+		protected override void Awake()
 		{
 			base.Awake();
 
@@ -49,6 +49,9 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		override protected void OnEnable()
 		{
 			base.OnEnable();
+
+			if(ProCamera2D == null)
+				return;
 
 			if (_triggerEnabled)
 				Toggle(true);

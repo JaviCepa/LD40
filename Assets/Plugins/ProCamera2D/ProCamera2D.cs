@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
     public class ProCamera2D : MonoBehaviour, ISerializationCallbackReceiver
     {
 		public const string Title = "Pro Camera 2D";
-        public static readonly Version Version = new Version("2.5.3");
+        public static readonly Version Version = new Version("2.6.2");
 
         #region Inspector Variables
 
@@ -124,7 +124,9 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
         public Vector3 LocalPosition { get { return _transform.localPosition; } set { _transform.localPosition = value; } }
 
-        public Vector2 ScreenSizeInWorldCoordinates { get; private set; }
+        public Vector2 StartScreenSizeInWorldCoordinates { get; private set; }
+
+		public Vector2 ScreenSizeInWorldCoordinates { get; private set; }
 
         public Vector3 PreviousTargetsMidPoint { get; private set; }
 
@@ -177,8 +179,6 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         Func<Vector3, float> Vector3D;
         Func<float, float, Vector3> VectorHV;
         Func<float, float, float, Vector3> VectorHVD;
-
-        Vector2 _startScreenSizeInWorldCoordinates;
 
         Coroutine _updateScreenSizeCoroutine;
         Coroutine _dollyZoomRoutine;
@@ -304,11 +304,23 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             _instance = null;
         }
 
-        #endregion
+		#endregion
 
 
-        #region Public Methods
+		#region Public Methods
 
+		/// <summary>Returns the current global offset on the horizontal axis</summary>
+		public float GetOffsetX()
+		{
+			return IsRelativeOffset ? OffsetX * ScreenSizeInWorldCoordinates.x * .5f : OffsetX;
+		}
+
+		/// <summary>Returns the current global offset on the vertical axis</summary>
+		public float GetOffsetY()
+		{
+			return IsRelativeOffset ? OffsetY * ScreenSizeInWorldCoordinates.y * .5f : OffsetY;
+		}
+		
         /// <summary>Apply the given influence to the camera during this frame.</summary>
         /// <param name="influence">The vector representing the influence to be applied</param>
         public void ApplyInfluence(Vector2 influence)
@@ -506,7 +518,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         /// </summary>
         public void ResetSize()
         {
-            SetScreenSize(_startScreenSizeInWorldCoordinates.y / 2);
+            SetScreenSize(StartScreenSizeInWorldCoordinates.y / 2);
         }
 
 		/// <summary>
@@ -515,9 +527,9 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		public void ResetStartSize(Vector2 newSize = default(Vector2))
 		{
 			if(newSize != default(Vector2))
-				_startScreenSizeInWorldCoordinates = newSize;
+				StartScreenSizeInWorldCoordinates = newSize;
 			else
-				_startScreenSizeInWorldCoordinates = Utils.GetScreenSizeInWorldCoords(GameCamera, Mathf.Abs(Vector3D(_transform.localPosition)));
+				StartScreenSizeInWorldCoordinates = Utils.GetScreenSizeInWorldCoords(GameCamera, Mathf.Abs(Vector3D(_transform.localPosition)));
 		}
 
         /// <summary>
@@ -981,16 +993,6 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         float GetCameraDistanceForFOV(float fov, float cameraHeight)
         {
             return cameraHeight / (2f * Mathf.Tan(0.5f * fov * Mathf.Deg2Rad));
-        }
-
-        float GetOffsetX()
-        {
-            return IsRelativeOffset ? OffsetX * ScreenSizeInWorldCoordinates.x * .5f : OffsetX;
-        }
-
-        float GetOffsetY()
-        {
-            return IsRelativeOffset ? OffsetY * ScreenSizeInWorldCoordinates.y * .5f : OffsetY;
         }
 
         #endregion
