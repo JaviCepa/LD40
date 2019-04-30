@@ -148,10 +148,15 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 			yield return new WaitForEndOfFrame();
 
 			var waitForSeconds = new WaitForSeconds(UpdateInterval);
+			var waitForSecondsRealtime = new WaitForSecondsRealtime(UpdateInterval);
 			while (true)
 			{
 				TestTrigger();
-				yield return waitForSeconds;
+				
+				if(ProCamera2D.IgnoreTimeScale)
+					yield return waitForSecondsRealtime;
+				else
+					yield return waitForSeconds;
 			}
 		}
 

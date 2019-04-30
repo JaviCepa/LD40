@@ -88,6 +88,8 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
+			
+			if(ProCamera2D == null) return;
 
 			ProCamera2D.RemovePositionOverrider(this);
 			ProCamera2D.RemoveSizeOverrider(this);

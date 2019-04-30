@@ -48,8 +48,9 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		protected override void OnDestroy()
 		{
 			base.OnDestroy();
-
-			ProCamera2D.RemoveSizeOverrider(this);
+			
+			if(ProCamera2D)
+				ProCamera2D.RemoveSizeOverrider(this);
 		}
 
 		#region ISizeOverrider implementation

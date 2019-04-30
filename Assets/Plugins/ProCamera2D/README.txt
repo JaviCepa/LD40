@@ -37,6 +37,50 @@ Twitter - http://www.twitter.com/lpfonseca
 
 ## CHANGELOG ##
 
+2.6.10
+- Core - Updated support for Unity 2019.x
+- Rooms - Improved support of multiple cameras and multiple Rooms extensions
+
+2.6.9
+- Added support for Unity 2019.1
+- PanAndZoom - Mark the pan target object as DontDestroyOnLoad if the extension is also marked
+
+2.6.8
+- Core - Editor code optimizations
+- Core - Added undo for adding camera targets
+- Core - Added a warning for cross scene references
+- Parallax - Added support for independent horizontal and vertical speeds per parallax layer
+- Repeater - Added a method for changing the repeating object at runtime
+- Shake - Added undo for changing presets lists
+- Rooms - Added a parameter to the EnterRoom method to force the transition
+
+2.6.7
+- TransitionsFX - Fixed error on editor caused by removed property
+- LimitDistance - Fixed bug that occurred on XZ and YZ orientations
+
+2.6.6
+- Core - Added an option to ignore the timeScale. This was possible before using ManualUpdate but wasn't very straightforward
+- Rooms - Added support for having multiple Rooms extensions 
+- ContentFitter - Corrected target size calculations on fixed width and height modes
+- Shake - Updated StopShaking method for improved accuracy
+- PanAndZoom - Added a parameter for automatic input detection (default) or choose between touch and/or mouse 
+
+2.6.5
+- Rooms - Added support for relative positioning the rooms, if the extension is added to an independent GameObject
+- Rooms - Fixed a transition not triggering when the zoom was equal to the room size
+- Rooms - The GetCameraSizeForRoom method is now public as well as the OriginalSize property
+- PixelPerfect - Automatically call the ResizeCameraToPixelPerfect method after setting the zoom level at runtime
+
+2.6.4
+- PanAndZoom - Fixed support for WebGL on Unity 2018.x
+- Rooms - Better error handling when a room is not found
+- Core - Prevented a null reference exception on some occasions where the main component was destroyed before the extensions
+
+2.6.3
+- TriggerInfluence - Added mode option to choose which axes are influenced
+- TransitionsFX - Fixed a shader compilation error on the PSVita
+- GeometryBoundaries - The MoveInColliderBoundaries helper member is now public
+
 2.6.2
 - PanAndZoom - (Mobile) Fixed a slight pan movement that could occur while moving over uGUI
 - PanAndZoom - Fixed the stutter that occured if there was a global offset applied to the core component

@@ -17,7 +17,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
     public class ProCamera2D : MonoBehaviour, ISerializationCallbackReceiver
     {
 		public const string Title = "Pro Camera 2D";
-        public static readonly Version Version = new Version("2.6.2");
+        public static readonly Version Version = new Version("2.6.10");
 
         #region Inspector Variables
 
@@ -44,6 +44,8 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         public bool IsRelativeOffset = true;
 
         public bool ZoomWithFOV;
+
+        public bool IgnoreTimeScale;
 
         #endregion
 
@@ -265,7 +267,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             TargetsMidPoint = GetTargetsWeightedMidPoint(ref CameraTargets);
             _cameraTargetHorizontalPositionSmoothed = Vector3H(TargetsMidPoint);
             _cameraTargetVerticalPositionSmoothed = Vector3V(TargetsMidPoint);
-            DeltaTime = Time.deltaTime;
+            DeltaTime = IgnoreTimeScale ? Time.unscaledDeltaTime : Time.deltaTime;
 
             // Center on target
             if (CenterTargetOnStart && CameraTargets.Count > 0)
@@ -290,13 +292,13 @@ namespace Com.LuisPedroFonseca.ProCamera2D
         void LateUpdate()
         {
             if (UpdateType == UpdateType.LateUpdate)
-                Move(Time.deltaTime);
+                Move(IgnoreTimeScale ? Time.unscaledDeltaTime : Time.deltaTime);
         }
 
         void FixedUpdate()
         {
             if (UpdateType == UpdateType.FixedUpdate)
-                Move(Time.fixedDeltaTime);
+                Move(IgnoreTimeScale ? Time.fixedUnscaledDeltaTime : Time.fixedDeltaTime);
         }
 
         void OnApplicationQuit()
@@ -511,6 +513,9 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
             _previousCameraTargetHorizontalPositionSmoothed = _cameraTargetHorizontalPositionSmoothed;
             _previousCameraTargetVerticalPositionSmoothed = _cameraTargetVerticalPositionSmoothed;
+
+            TargetsMidPoint = CameraTargetPosition;
+            PreviousTargetsMidPoint = TargetsMidPoint;
         }
 
         /// <summary>
@@ -980,7 +985,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 #if UNITY_EDITOR
 						if (Application.isPlaying)
 #endif
-							Tk2dCam.ZoomFactor = (_startScreenSizeInWorldCoordinates.y * _startZoomFactor) / (newSize * 2f);
+							Tk2dCam.ZoomFactor = (StartScreenSizeInWorldCoordinates.y * _startZoomFactor) / (newSize * 2f);
 					}
 				}
 			}

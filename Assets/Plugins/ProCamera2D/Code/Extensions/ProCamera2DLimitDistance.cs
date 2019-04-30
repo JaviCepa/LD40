@@ -39,7 +39,8 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		{
 			base.OnDestroy();
 
-			ProCamera2D.RemovePositionDeltaChanger(this);
+			if(ProCamera2D)
+				ProCamera2D.RemovePositionDeltaChanger(this);
 		}
 
 		#region IPositionDeltaChanger implementation
@@ -102,9 +103,9 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 				}
 			}
 
-			ProCamera2D.CameraTargetPositionSmoothed = new Vector2(
-				horizontalExtra ? Vector3H(ProCamera2D.CameraTargetPositionSmoothed) + horizontalDeltaMovement - Vector3H(originalDelta) : Vector3H(ProCamera2D.CameraTargetPositionSmoothed),
-				verticalExtra ? Vector3V(ProCamera2D.CameraTargetPositionSmoothed) + verticalDeltaMovement - Vector3V(originalDelta) : Vector3V(ProCamera2D.CameraTargetPositionSmoothed));
+			var h = horizontalExtra ? ProCamera2D.CameraTargetPositionSmoothed.x + horizontalDeltaMovement - Vector3H(originalDelta) : ProCamera2D.CameraTargetPositionSmoothed.x;
+			var v = verticalExtra ? ProCamera2D.CameraTargetPositionSmoothed.y + verticalDeltaMovement - Vector3V(originalDelta) : ProCamera2D.CameraTargetPositionSmoothed.y;
+			ProCamera2D.CameraTargetPositionSmoothed = new Vector2(h, v);
 
 			return VectorHV(horizontalDeltaMovement, verticalDeltaMovement);
 		}

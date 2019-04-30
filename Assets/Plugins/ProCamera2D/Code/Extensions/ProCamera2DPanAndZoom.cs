@@ -22,6 +22,11 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		// Events
 		public Action OnPanStarted;
 		public Action OnPanFinished;
+		
+		// Input
+		public bool AutomaticInputDetection = true;
+		public bool UseMouseInput;
+		public bool UseTouchInput;
 
 		public bool DisableOverUGUI = true;
 
@@ -110,6 +115,12 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		{
 			base.Awake();
 
+			if (AutomaticInputDetection)
+			{
+				UseMouseInput = !Input.touchSupported;
+				UseTouchInput = Input.touchSupported;
+			}
+
 			UpdateCurrentFollowSmoothness();
 
 			_eventSystem = EventSystem.current;
@@ -123,12 +134,18 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		{
 			base.OnDestroy();
 
-			ProCamera2D.RemovePreMover(this);
+			if(ProCamera2D)
+				ProCamera2D.RemovePreMover(this);
 		}
 
-		void Start()
+		IEnumerator Start()
 		{
 			_initialCamSize = ProCamera2D.ScreenSizeInWorldCoordinates.y * .5f;
+
+			yield return null;
+			
+			if(gameObject.scene.buildIndex == -1)
+				DontDestroyOnLoad(_panTarget.gameObject);
 		}
 
 		protected override void OnEnable()
@@ -158,7 +175,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		public void PreMove(float deltaTime)
 		{
 			// Detect if the user is pointing over an UI element
-			if (Input.touchSupported)
+			if (UseTouchInput)
 			{
 				_skip = DisableOverUGUI && _eventSystem;
 				if (_skip)
@@ -179,7 +196,8 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 					CancelZoom();
 				}
 			}
-			else
+			
+			if (UseMouseInput)
 			{
 				_skip = DisableOverUGUI && _eventSystem && _eventSystem.IsPointerOverGameObject();
 				if (_skip)
@@ -213,7 +231,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		{
 			_panDelta = Vector2.zero;
 
-			if (Input.touchSupported)
+			if (UseTouchInput)
 			{
 				// Time since zoom
 				if (Time.time - _touchZoomTime < .1f)
@@ -266,7 +284,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 
 			var panSpeed = DragPanSpeedMultiplier;
 
-			if (!Input.touchSupported)
+			if (UseMouseInput)
 			{
 				// Reset camera inertia on pan start
 				if (UsePanByDrag && Input.GetMouseButtonDown((int)PanMouseButton))
@@ -361,7 +379,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 		{
 			var zoomInput = 0f;
 
-			if (Input.touchSupported)
+			if (UseTouchInput)
 			{
 				if (Input.touchCount == 2)
 				{
@@ -403,11 +421,12 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 					}
 				}
 			}
-			else
+			
+			if(UseMouseInput)
 			{
 				// Zoom input
 				zoomInput = Input.GetAxis("Mouse ScrollWheel");
-
+				
 				// Zoom point
 				_zoomPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Mathf.Abs(Vector3D(ProCamera2D.LocalPosition)));
 			}
@@ -417,7 +436,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 				return;
 
 			// Different zoom speed according to the platform
-			var zoomSpeed = Input.touchSupported ? PinchZoomSpeed * 10f : MouseZoomSpeed;
+			var zoomSpeed = UseTouchInput ? PinchZoomSpeed * 10f : MouseZoomSpeed;
 
 			// Cancel zoom if max/min reached
 			if ((_onMaxZoom && zoomInput * zoomSpeed < 0) || (_onMinZoom && zoomInput * zoomSpeed > 0))
@@ -429,7 +448,7 @@ namespace Com.LuisPedroFonseca.ProCamera2D
 			// Zoom amount
 			_zoomAmount = Mathf.SmoothDamp(_prevZoomAmount, zoomInput * zoomSpeed * deltaTime, ref _zoomVelocity, ZoomSmoothness, float.MaxValue, deltaTime);
 
-			if (!Input.touchSupported)
+			if (UseMouseInput)
 			{
 				// Reset smoothness once zoom stops
 				if (Mathf.Abs(_zoomAmount) <= .0001f)
