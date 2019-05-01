@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1650444107057720}
-  m_IsPrefabAsset: 1
 --- !u!1 &1005165751015222
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224147309795704826}
@@ -27,1093 +17,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1650444107057720
-GameObject:
+--- !u!224 &224147309795704826
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4729066456423218}
-  - component: {fileID: 20447748891826868}
-  - component: {fileID: 92949156420615080}
-  - component: {fileID: 124834748955637398}
-  - component: {fileID: 81426797051947340}
-  - component: {fileID: 114980849492914212}
-  - component: {fileID: 114707842643980380}
-  - component: {fileID: 114658971583615880}
-  - component: {fileID: 114826783578662974}
-  - component: {fileID: 114684966663469756}
-  - component: {fileID: 114812453126375020}
-  - component: {fileID: 114733371718391008}
-  - component: {fileID: 114690288258295288}
-  m_Layer: 0
-  m_Name: PixelPerfectCamera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4729066456423218
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005165751015222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -212.64062, y: 20.140625, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 224147309795704826}
-  m_Father: {fileID: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 0.82875, y: 0.82875, z: 0.82875}
+  m_Children: []
+  m_Father: {fileID: 4729066456423218}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20447748891826868
-Camera:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.7960785, g: 0.8588236, b: 0.98823535, a: 0}
-  m_projectionMatrixMode: 1
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 5.125
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &81426797051947340
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
---- !u!92 &92949156420615080
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
---- !u!114 &114658971583615880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17577239430844efcbdda516df8c1f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pc2D: {fileID: 114980849492914212}
-  PixelsPerUnit: 8
-  ViewportAutoScale: 3
-  TargetViewportSizeInPixels: {x: 640, y: 480}
-  Zoom: 4
-  SnapMovementToGrid: 0
-  SnapCameraToGrid: 0
-  DrawGrid: 1
-  GridColor: {r: 1, g: 0, b: 0, a: 0.1}
-  GridDensity: 3.9992375
---- !u!114 &114684966663469756
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6903f12ac8ae44a41ba2a44700ec60ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pc2D: {fileID: 114980849492914212}
-  UseNumericBoundaries: 1
-  UseTopBoundary: 0
-  TopBoundary: 10
-  TargetTopBoundary: 0
-  UseBottomBoundary: 1
-  BottomBoundary: -10
-  TargetBottomBoundary: 0
-  UseLeftBoundary: 0
-  LeftBoundary: -10
-  TargetLeftBoundary: 0
-  UseRightBoundary: 0
-  RightBoundary: 10
-  TargetRightBoundary: 0
-  IsCameraPositionHorizontallyBounded: 0
-  IsCameraPositionVerticallyBounded: 0
-  CurrentBoundariesTrigger: {fileID: 0}
-  HasFiredTransitionStarted: 0
-  HasFiredTransitionFinished: 0
-  UseSoftBoundaries: 1
-  Softness: 0.5
-  SoftAreaSize: 0.1
---- !u!114 &114690288258295288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac0ec3d6ad5f4a3d9d184bc3773a3a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pc2D: {fileID: 114980849492914212}
-  ShakePresets:
-  - {fileID: 11400000, guid: 865c0998fbb884706bc8e9216bc17d0c, type: 2}
-  ConstantShakePresets: []
-  StartConstantShakePreset: {fileID: 0}
-  CurrentConstantShakePreset: {fileID: 0}
---- !u!114 &114707842643980380
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c309ef1457c884c91e8f40e3b82e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114733371718391008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0685d75f136209a4caa6cf968e144217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114812453126375020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1eca57db7d394266ae024997acf4456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pc2D: {fileID: 114980849492914212}
-  TransitionShaderEnter: 2
-  DurationEnter: 0.5
-  DelayEnter: 0.5
-  EaseTypeEnter: 1
-  BackgroundColorEnter: {r: 0, g: 0, b: 0, a: 1}
-  SideEnter: 0
-  DirectionEnter: 0
-  BlindsEnter: 16
-  TextureEnter: {fileID: 0}
-  TextureSmoothingEnter: 0.2
-  TransitionShaderExit: 2
-  DurationExit: 0.5
-  DelayExit: 0
-  EaseTypeExit: 1
-  BackgroundColorExit: {r: 0, g: 0, b: 0, a: 1}
-  SideExit: 0
-  DirectionExit: 0
-  BlindsExit: 16
-  TextureExit: {fileID: 0}
-  TextureSmoothingExit: 0.2
-  StartSceneOnEnterState: 1
-  UseRealtime: 1
---- !u!114 &114826783578662974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30112d3b8decd43b5bf051e67694b027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pc2D: {fileID: 114980849492914212}
-  Rooms:
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 0
-      y: 15
-      width: 10
-      height: 36
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 10
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 30
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 40
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 50
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 60
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 70
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 70
-      y: -6
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 85
-      y: 0
-      width: 20
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 99
-      y: -14
-      width: 10
-      height: 18
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 112
-      y: -26
-      width: 36
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 125
-      y: -10
-      width: 10
-      height: 26
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 65
-      y: 9
-      width: 20
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 50
-      y: 6
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 143
-      y: 9
-      width: 14
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 159
-      y: 14
-      width: 18
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 181
-      y: 14
-      width: 26
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 204
-      y: 13
-      width: 20
-      height: 14
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 110.5
-      y: -32
-      width: 11
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 110.5
-      y: -38
-      width: 3
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 110.5
-      y: -43.5
-      width: 3
-      height: 5
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 110.5
-      y: -51.5
-      width: 21
-      height: 11
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 20
-      y: 0
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 20
-      y: -6
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 0
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 244
-      y: 10
-      width: 20
-      height: 14
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 264
-      y: 11
-      width: 20
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 284
-      y: 8
-      width: 20
-      height: 4
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 304
-      y: 17
-      width: 20
-      height: 26
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 338
-      y: 17
-      width: 48
-      height: 26
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 370
-      y: 27
-      width: 16
-      height: 44
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 389
-      y: 27
-      width: 20
-      height: 44
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 389
-      y: -8
-      width: 40
-      height: 24
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 404
-      y: 43
-      width: 10
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 419
-      y: 46
-      width: 20
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 173
-      y: -2
-      width: 10
-      height: 14
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 182
-      y: -6
-      width: 8
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 203
-      y: -4
-      width: 32
-      height: 10
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 95
-      y: 17
-      width: 40
-      height: 22
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 105
-      y: 0.39999998
-      width: 20
-      height: 10.799999
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 231
-      y: 20
-      width: 14
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 224
-      y: 11
-      width: 20
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: -23
-      y: 0
-      width: 36
-      height: 6
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: -58
-      y: 3
-      width: 36
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: -93
-      y: 6
-      width: 36
-      height: 18
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: -157
-      y: 6
-      width: 92
-      height: 18
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: -213
-      y: 20
-      width: 20
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: -213
-      y: 6
-      width: 20
-      height: 18
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 132
-      y: 19
-      width: 8
-      height: 26
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 121
-      y: 17
-      width: 12
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 143
-      y: 17
-      width: 14
-      height: 10
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 117.5
-      y: 0
-      width: 5
-      height: 4
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 121
-      y: 7
-      width: 12
-      height: 8
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 38
-      y: 80
-      width: 510
-      height: 96
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 328
-      y: 79
-      width: 68
-      height: 98
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 367
-      y: 57
-      width: 10
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 391
-      y: 57
-      width: 36
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 226
-      y: -2
-      width: 14
-      height: 14
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 263
-      y: -5
-      width: 62
-      height: 8
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 324
-      y: -1
-      width: 60
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 209
-      y: 26
-      width: 30
-      height: 12
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 225
-      y: 38
-      width: 10
-      height: 30
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 112
-      y: -9
-      width: 16
-      height: 8
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 112
-      y: -18
-      width: 16
-      height: 10
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 424
-      y: 57
-      width: 30
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  - ID: Start
-    Dimensions:
-      serializedVersion: 2
-      x: 446
-      y: 57
-      width: 12
-      height: 16
-    TransitionDuration: 0.5
-    TransitionEaseType: 0
-    ScaleCameraToFit: 1
-    Zoom: 0
-    ZoomScale: 1.5
-  UpdateInterval: 0.1
-  UseTargetsMidPoint: 1
-  TriggerTarget: {fileID: 0}
-  TransitionInstanlyOnStart: 1
-  RestoreOnRoomExit: 0
-  RestoreDuration: 1
-  RestoreEaseType: 0
-  AutomaticRoomActivation: 1
-  OnStartedTransition:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SaveCheckPoint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Com.LuisPedroFonseca.ProCamera2D.RoomEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  OnFinishedTransition:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Com.LuisPedroFonseca.ProCamera2D.RoomEvent, Assembly-CSharp-firstpass,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  OnExitedAllRooms:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &114980849492914212
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b8c96e2cdc154e848a3d9fe62464d42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraTargets:
-  - TargetTransform: {fileID: 0}
-    TargetInfluenceH: 1
-    TargetInfluenceV: 1
-    TargetOffset: {x: 0, y: 0}
-  CenterTargetOnStart: 1
-  Axis: 0
-  UpdateType: 0
-  FollowHorizontal: 1
-  HorizontalFollowSmoothness: 0
-  FollowVertical: 1
-  VerticalFollowSmoothness: 0
-  OffsetX: 0
-  OffsetY: 0
-  IsRelativeOffset: 1
-  ZoomWithFOV: 0
-  CurrentZoomTriggerID: 0
-  IsCameraPositionLeftBounded: 0
-  IsCameraPositionRightBounded: 0
-  IsCameraPositionTopBounded: 0
-  IsCameraPositionBottomBounded: 0
-  GameCamera: {fileID: 20447748891826868}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 331.5, y: 156.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!120 &120689695173632492
 LineRenderer:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005165751015222}
   m_Enabled: 1
   m_CastShadows: 1
@@ -1123,8 +51,9 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
+  m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cadfde2f3ef294043affa7194ae69b94, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1148,7 +77,7 @@ LineRenderer:
   - {x: 0, y: 31.16, z: 0}
   - {x: 0, y: 28.8, z: 1}
   m_Parameters:
-    serializedVersion: 2
+    serializedVersion: 3
     widthMultiplier: 0.125
     widthCurve:
       serializedVersion: 2
@@ -1198,31 +127,1174 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
+    shadowBias: 0
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!124 &124834748955637398
-Behaviour:
-  m_ObjectHideFlags: 1
+--- !u!1 &1650444107057720
+GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4729066456423218}
+  - component: {fileID: 20447748891826868}
+  - component: {fileID: 92949156420615080}
+  - component: {fileID: 124834748955637398}
+  - component: {fileID: 81426797051947340}
+  - component: {fileID: 114980849492914212}
+  - component: {fileID: 114707842643980380}
+  - component: {fileID: 114658971583615880}
+  - component: {fileID: 114826783578662974}
+  - component: {fileID: 114684966663469756}
+  - component: {fileID: 114812453126375020}
+  - component: {fileID: 114733371718391008}
+  - component: {fileID: 114690288258295288}
+  m_Layer: 0
+  m_Name: PixelPerfectCamera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4729066456423218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650444107057720}
-  m_Enabled: 1
---- !u!224 &224147309795704826
-RectTransform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1005165751015222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 0.82875, y: 0.82875, z: 0.82875}
-  m_Children: []
-  m_Father: {fileID: 4729066456423218}
+  m_LocalPosition: {x: -212.64062, y: 20.140625, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 224147309795704826}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 331.5, y: 156.5}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!20 &20447748891826868
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.7960785, g: 0.8588236, b: 0.98823535, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 36.5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!92 &92949156420615080
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+--- !u!124 &124834748955637398
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+--- !u!81 &81426797051947340
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+--- !u!114 &114980849492914212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8c96e2cdc154e848a3d9fe62464d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraTargets: []
+  CenterTargetOnStart: 1
+  Axis: 0
+  UpdateType: 0
+  FollowHorizontal: 1
+  HorizontalFollowSmoothness: 0
+  FollowVertical: 1
+  VerticalFollowSmoothness: 0
+  OffsetX: 0
+  OffsetY: 0
+  IsRelativeOffset: 1
+  ZoomWithFOV: 0
+  IgnoreTimeScale: 0
+  CurrentZoomTriggerID: 0
+  IsCameraPositionLeftBounded: 0
+  IsCameraPositionRightBounded: 0
+  IsCameraPositionTopBounded: 0
+  IsCameraPositionBottomBounded: 0
+  GameCamera: {fileID: 20447748891826868}
+--- !u!114 &114707842643980380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81c309ef1457c884c91e8f40e3b82e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114658971583615880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17577239430844efcbdda516df8c1f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc2D: {fileID: 114980849492914212}
+  PixelsPerUnit: 8
+  ViewportAutoScale: 3
+  TargetViewportSizeInPixels: {x: 640, y: 480}
+  _zoom: 1
+  SnapMovementToGrid: 0
+  SnapCameraToGrid: 0
+  DrawGrid: 1
+  GridColor: {r: 1, g: 0, b: 0, a: 0.1}
+  GridDensity: 3.9992375
+--- !u!114 &114826783578662974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30112d3b8decd43b5bf051e67694b027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc2D: {fileID: 114980849492914212}
+  Rooms:
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 0
+      y: 15
+      width: 10
+      height: 36
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 10
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 30
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 40
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 50
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 60
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 70
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 70
+      y: -6
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 85
+      y: 0
+      width: 20
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 99
+      y: -14
+      width: 10
+      height: 18
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 112
+      y: -26
+      width: 36
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 125
+      y: -10
+      width: 10
+      height: 26
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 65
+      y: 9
+      width: 20
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 50
+      y: 6
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 143
+      y: 9
+      width: 14
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 159
+      y: 14
+      width: 18
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 181
+      y: 14
+      width: 26
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 204
+      y: 13
+      width: 20
+      height: 14
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 110.5
+      y: -32
+      width: 11
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 110.5
+      y: -38
+      width: 3
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 110.5
+      y: -43.5
+      width: 3
+      height: 5
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 110.5
+      y: -51.5
+      width: 21
+      height: 11
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 20
+      y: 0
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 20
+      y: -6
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 0
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 244
+      y: 10
+      width: 20
+      height: 14
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 264
+      y: 11
+      width: 20
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 284
+      y: 8
+      width: 20
+      height: 4
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 304
+      y: 17
+      width: 20
+      height: 26
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 338
+      y: 17
+      width: 48
+      height: 26
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 370
+      y: 27
+      width: 16
+      height: 44
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 389
+      y: 27
+      width: 20
+      height: 44
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 389
+      y: -8
+      width: 40
+      height: 24
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 404
+      y: 43
+      width: 10
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 419
+      y: 46
+      width: 20
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 173
+      y: -2
+      width: 10
+      height: 14
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 182
+      y: -6
+      width: 8
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 203
+      y: -4
+      width: 32
+      height: 10
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 95
+      y: 17
+      width: 40
+      height: 22
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 105
+      y: 0.39999998
+      width: 20
+      height: 10.799999
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 231
+      y: 20
+      width: 14
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 224
+      y: 11
+      width: 20
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: -23
+      y: 0
+      width: 36
+      height: 6
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: -58
+      y: 3
+      width: 36
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: -93
+      y: 6
+      width: 36
+      height: 18
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: -157
+      y: 6
+      width: 92
+      height: 18
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: -213
+      y: 20
+      width: 20
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: -213
+      y: 6
+      width: 20
+      height: 18
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 132
+      y: 19
+      width: 8
+      height: 26
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 121
+      y: 17
+      width: 12
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 143
+      y: 17
+      width: 14
+      height: 10
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 117.5
+      y: 0
+      width: 5
+      height: 4
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 121
+      y: 7
+      width: 12
+      height: 8
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 38
+      y: 80
+      width: 510
+      height: 96
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 328
+      y: 79
+      width: 68
+      height: 98
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 367
+      y: 57
+      width: 10
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 391
+      y: 57
+      width: 36
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 226
+      y: -2
+      width: 14
+      height: 14
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 263
+      y: -5
+      width: 62
+      height: 8
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 324
+      y: -1
+      width: 60
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 209
+      y: 26
+      width: 30
+      height: 12
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 225
+      y: 38
+      width: 10
+      height: 30
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 112
+      y: -9
+      width: 16
+      height: 8
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 112
+      y: -18
+      width: 16
+      height: 10
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 424
+      y: 57
+      width: 30
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  - ID: Start
+    Dimensions:
+      serializedVersion: 2
+      x: 446
+      y: 57
+      width: 12
+      height: 16
+    TransitionDuration: 0.5
+    TransitionEaseType: 0
+    ScaleCameraToFit: 1
+    Zoom: 0
+    ZoomScale: 1.5
+    InternalID: 0
+  UpdateInterval: 0.1
+  UseTargetsMidPoint: 1
+  TriggerTarget: {fileID: 0}
+  TransitionInstanlyOnStart: 1
+  RestoreOnRoomExit: 0
+  RestoreDuration: 1
+  RestoreEaseType: 0
+  AutomaticRoomActivation: 1
+  UseRelativePosition: 0
+  OnStartedTransition:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SaveCheckPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Com.LuisPedroFonseca.ProCamera2D.RoomEvent, Assembly-CSharp-firstpass,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnFinishedTransition:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Com.LuisPedroFonseca.ProCamera2D.RoomEvent, Assembly-CSharp-firstpass,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnExitedAllRooms:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114684966663469756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6903f12ac8ae44a41ba2a44700ec60ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc2D: {fileID: 114980849492914212}
+  UseNumericBoundaries: 1
+  UseTopBoundary: 0
+  TopBoundary: 10
+  TargetTopBoundary: 0
+  UseBottomBoundary: 1
+  BottomBoundary: -10
+  TargetBottomBoundary: 0
+  UseLeftBoundary: 0
+  LeftBoundary: -10
+  TargetLeftBoundary: 0
+  UseRightBoundary: 0
+  RightBoundary: 10
+  TargetRightBoundary: 0
+  IsCameraPositionHorizontallyBounded: 0
+  IsCameraPositionVerticallyBounded: 0
+  CurrentBoundariesTrigger: {fileID: 0}
+  HasFiredTransitionStarted: 0
+  HasFiredTransitionFinished: 0
+  UseSoftBoundaries: 1
+  Softness: 0.5
+  SoftAreaSize: 0.1
+--- !u!114 &114812453126375020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1eca57db7d394266ae024997acf4456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc2D: {fileID: 114980849492914212}
+  TransitionShaderEnter: 2
+  DurationEnter: 0.5
+  DelayEnter: 0.5
+  EaseTypeEnter: 1
+  BackgroundColorEnter: {r: 0, g: 0, b: 0, a: 1}
+  SideEnter: 0
+  DirectionEnter: 0
+  BlindsEnter: 16
+  TextureEnter: {fileID: 0}
+  TextureSmoothingEnter: 0.2
+  TransitionShaderExit: 2
+  DurationExit: 0.5
+  DelayExit: 0
+  EaseTypeExit: 1
+  BackgroundColorExit: {r: 0, g: 0, b: 0, a: 1}
+  SideExit: 0
+  DirectionExit: 0
+  BlindsExit: 16
+  TextureExit: {fileID: 0}
+  TextureSmoothingExit: 0.2
+  StartSceneOnEnterState: 1
+--- !u!114 &114733371718391008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0685d75f136209a4caa6cf968e144217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114690288258295288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650444107057720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac0ec3d6ad5f4a3d9d184bc3773a3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pc2D: {fileID: 114980849492914212}
+  ShakePresets:
+  - {fileID: 11400000, guid: 865c0998fbb884706bc8e9216bc17d0c, type: 2}
+  ConstantShakePresets: []
+  StartConstantShakePreset: {fileID: 0}
+  CurrentConstantShakePreset: {fileID: 0}

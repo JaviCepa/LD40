@@ -6,81 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/SampleMenu-GameSelect.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/EndingTemplate.unity
+    guid: 80aaee95625fe4d4ea1451d6ae723eb5
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PixtroidSample/SampleMenu-Pixtroid.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Gameplay.unity
+    guid: e04819880d07f0f4ca14401250d43988
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/ComandBroSample/SampleMenu-CommandBro.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/MainMenu.unity
+    guid: ab4df9cde39eaab4880dd4cdeec41562
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PixtroidSample/SampleScene-Pixtroid.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/AnvilEnding.unity
+    guid: 20a0af0eb16ea9247a2e505d25231ae6
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-LevelSelect.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/CliffEnding.unity
+    guid: db262dabb24df8349938bcd7207579b3
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-Level1.1.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/FishingEnding.unity
+    guid: b1896d09c38ab8a49823e2f793a1e1c2
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-Level1.2.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/LavaEnding.unity
+    guid: a104df946754e7c489c5d07ed2fda769
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-Level1.3.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/PrincessEnding.unity
+    guid: 22348127cbc71e840be55378d9663d2a
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-Level1.4.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/PrincessWeaponEnding.unity
+    guid: 806ceeb542f3f434a87a8923dc6316d4
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-Level1.5.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/StairsEnding.unity
+    guid: a1230ebabb3800341ab1b1ae3696d548
   - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/SampleScene-Alien-Level1.6-BOSS.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/ComandBroSample/SampleScene-CommandBro.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/LoopyHamster/SampleScene-LoopyHamster.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/Hero25DSample/SampleScene-Hero25D.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/StealthSample/SampleScene-Stealth.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/BeatEmUpSample/SampleScene-IceBeatEmUp.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/BionicCopSample/SampleScene-BionicCop.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PlatformHowToSample/PlatformSamples-Movers.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PlatformHowToSample/PlatformSamples-MoreMovers.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PlatformHowToSample/PlatformSamples-Hazards.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PlatformHowToSample/PlatformSamples-Items.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PlatformHowToSample/PlatformSamples-Puzzles1.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/PlatformHowToSample/PlatformSamples-Puzzles2.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/ComandBroSample/Variations/SampleVariation-CommandBro-MultiPlayer.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/Variations/SampleVariation-Alien-Menu-WithCharacterSelect.unity
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/2DPlatformerPro/Samples/AlienSample/Variations/SampleVariation-Alien-Level1.1-WithCharacterSelect.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Endings/TreasureEnding.unity
+    guid: 7215c411ab7667c438509f3d62f5402b
   m_configObjects: {}
