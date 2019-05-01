@@ -7,14 +7,12 @@ using DG.Tweening;
 public class MainMenuOptions : MonoBehaviour {
 
 	public Button playButton;
-	public Button optionsButton;
 	public Button exitButton;
 
 	public CanvasGroup fader;
 
 	void Start () {
 		playButton.onClick.AddListener(()=>Play());
-		optionsButton.onClick.AddListener(() => Options());
 		exitButton.onClick.AddListener(() => Exit());
 	}
 

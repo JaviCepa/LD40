@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: 15b353d999138294f925548735c70afc
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Shopkeeper_0
-    21300002: Shopkeeper_1
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Shopkeeper_0
+  - first:
+      213: 21300002
+    second: Shopkeeper_1
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -90,6 +94,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 13469d95723907e4e98bbdb216ef5543
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -110,6 +115,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a37c84fd5e824824280f80c011e6b868
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -118,10 +124,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

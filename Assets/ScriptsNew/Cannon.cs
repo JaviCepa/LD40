@@ -46,7 +46,7 @@ public class Cannon : MonoBehaviour {
 		sequence.AppendCallback(() => FindObjectOfType<Com.LuisPedroFonseca.ProCamera2D.ProCamera2DShake>().Shake(0));
 		sequence.AppendCallback(() => playerObject.SetActive(true));
 		sequence.Append(playerObject.transform.DOPath(pathPoints, 5f).SetEase(Ease.OutQuad));
-		sequence.Join(trail.transform.DOPath(pathPoints, 5f).SetEase(Ease.OutQuad));
+		sequence.Join(trail.transform.DOPath(pathPoints, 5f, PathType.CatmullRom).SetEase(Ease.OutQuad));
 		sequence.AppendCallback(() => playerObject.SetActive(true));
 		sequence.AppendInterval(3f);
 		sequence.AppendCallback(() => trail.SetActive(false));

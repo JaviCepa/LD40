@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 1dcc83e2730515742b123ef2d75c14e1
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: MiniIsland_0
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: MiniIsland_0
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -89,6 +91,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f37149a7258ca344a9052f6d9422514c
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -97,10 +100,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

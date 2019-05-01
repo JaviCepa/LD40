@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: a624136ae5a2b6843bec06554b9f0b10
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Lonk_Fly_0
-    21300002: Lonk_Fly_1
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Lonk_Fly_0
+  - first:
+      213: 21300002
+    second: Lonk_Fly_1
   externalObjects: {}
-  serializedVersion: 9
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -90,6 +94,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f7dd4847f944acf47adcf039af9afd78
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -110,6 +115,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f544e785697c6b74a8bbb07a30d61b93
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -118,10 +124,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
