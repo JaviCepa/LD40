@@ -9,12 +9,18 @@ public class DisplayChat : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		ChatManager.DisplayMessage(textToDisplay, gameObject);
+        if (collision.gameObject.name == "Hero")
+        {
+            ChatManager.DisplayMessage(textToDisplay, gameObject);
+        }
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		ChatManager.HideMessage();
+        if (collision.gameObject.name == "Hero")
+        {
+            ChatManager.HideMessage();
+        }
 	}
 
 }
