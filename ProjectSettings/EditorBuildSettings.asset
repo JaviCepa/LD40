@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EndingTemplate.unity
-    guid: 80aaee95625fe4d4ea1451d6ae723eb5
+    path: Assets/Scenes/MainMenu.unity
+    guid: ab4df9cde39eaab4880dd4cdeec41562
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
     guid: e04819880d07f0f4ca14401250d43988
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: ab4df9cde39eaab4880dd4cdeec41562
   - enabled: 1
     path: Assets/Scenes/Endings/AnvilEnding.unity
     guid: 20a0af0eb16ea9247a2e505d25231ae6

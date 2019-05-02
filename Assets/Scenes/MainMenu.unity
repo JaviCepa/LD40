@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 712928192}
-  optionsButton: {fileID: 0}
   exitButton: {fileID: 1487531587}
   fader: {fileID: 1131653593}
 --- !u!1 &356630483
@@ -1366,7 +1365,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Made for #LDJAM40'
+  m_Text: 'Made for #LDJAM40 by @JaviCepa'
 --- !u!222 &731240561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1980,9 +1979,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Lonk''s
 
-    Adventure
+    Proto
 
-    (Prototype)'
+    Adventure'
 --- !u!222 &1356620106
 CanvasRenderer:
   m_ObjectHideFlags: 0
