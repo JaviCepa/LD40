@@ -6,6 +6,6 @@ public class KillZone : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		collision.gameObject.SendMessage("Kill", SendMessageOptions.DontRequireReceiver);
+		collision.gameObject.SendMessage("Respawn", SendMessageOptions.DontRequireReceiver);
 	}
 }

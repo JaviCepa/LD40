@@ -7418,17 +7418,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114495478357685104, guid: 41af6b5aec02aeb438b56b889a6b34c6,
-        type: 3}
-      propertyPath: endingText
-      value: With all that gold Lonk could finally retire from this dangerous profession.
-        He lived happily ever after. The princess was never found.
-      objectReference: {fileID: 0}
-    - target: {fileID: 114495478357685104, guid: 41af6b5aec02aeb438b56b889a6b34c6,
-        type: 3}
-      propertyPath: endingIndex
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4434066331915642, guid: 41af6b5aec02aeb438b56b889a6b34c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7461,15 +7450,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114547144413623074, guid: 41af6b5aec02aeb438b56b889a6b34c6,
+    - target: {fileID: 114495478357685104, guid: 41af6b5aec02aeb438b56b889a6b34c6,
         type: 3}
-      propertyPath: PixelsPerUnit
-      value: 100
+      propertyPath: endingText
+      value: With all that gold Lonk could finally retire from his dangerous job.
+        He lived happily ever after. The princess was never found.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114495478357685104, guid: 41af6b5aec02aeb438b56b889a6b34c6,
+        type: 3}
+      propertyPath: endingIndex
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 20538172487520964, guid: 41af6b5aec02aeb438b56b889a6b34c6,
         type: 3}
       propertyPath: orthographic size
       value: 2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 114547144413623074, guid: 41af6b5aec02aeb438b56b889a6b34c6,
+        type: 3}
+      propertyPath: PixelsPerUnit
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41af6b5aec02aeb438b56b889a6b34c6, type: 3}

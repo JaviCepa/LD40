@@ -121,9 +121,9 @@ public class Hero : MonoBehaviour
 		lastCheckPoint = transform.position;
 	}
 
-	public void Kill()
+	public void Respawn()
 	{
-		character.ForceAnimation(PlatformerPro.AnimationState.DEATH, 2f);
+		//character.ForceAnimation(PlatformerPro.AnimationState.DEATH, 2f);
 		transform.position = lastCheckPoint;
 	}
 

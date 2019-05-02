@@ -35,7 +35,10 @@ public class TreasureItem : MonoBehaviour {
 
 	void DisplayParticles()
 	{
-		Instantiate(itemCollectedParticlesPrefab, transform.position - Vector3.forward, Quaternion.identity, transform);
+        if (itemCollectedParticlesPrefab != null)
+        {
+            Instantiate(itemCollectedParticlesPrefab, transform.position - Vector3.forward, Quaternion.identity, transform);
+        }
 	}
 
 	private void Update()

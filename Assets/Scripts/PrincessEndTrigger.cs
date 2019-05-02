@@ -21,7 +21,7 @@ public class PrincessEndTrigger : MonoBehaviour {
 
 		if (hero.currentSkills.Contains(SkillTypes.Shield))
 		{
-			GameManager.LoadEnding(EndingTypes.PrincessWeapon);
+			GameManager.LoadEnding(EndingTypes.PrincessNoEquipment);
 		}
 		else {
 			GameManager.LoadEnding(EndingTypes.Princess); 
