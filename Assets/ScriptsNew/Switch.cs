@@ -30,7 +30,8 @@ public class Switch : MonoBehaviour {
 
 	private void OnDrawGizmos()
 	{
-		if (target != null) {
+		if (target != null)
+        {
 			Gizmos.DrawLine(transform.position, target.transform.position);
 		}
 	}

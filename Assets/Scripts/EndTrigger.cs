@@ -17,7 +17,8 @@ public class EndTrigger : TriggerArea
         }
         else if (!requireFullWeight)
         {
-            if (endingType == EndingTypes.Princess && FindObjectOfType<Hero>().currentSkills.Count > 0)
+            Debug.Log("Skills: " + FindObjectOfType<Hero>().currentSkills.Count);
+            if (endingType == EndingTypes.Princess && FindObjectOfType<Hero>().currentSkills.Count > 2)
             {
                 endingType = EndingTypes.PrincessNoEquipment;
             }
